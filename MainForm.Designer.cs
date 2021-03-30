@@ -34,6 +34,8 @@ namespace LowaPass
             this.categorieDisplayer = new System.Windows.Forms.Panel();
             this.metroScrollBar = new MetroFramework.Controls.MetroScrollBar();
             this.SideNavFooter = new System.Windows.Forms.Panel();
+            this.information = new System.Windows.Forms.PictureBox();
+            this.settings = new System.Windows.Forms.PictureBox();
             this.SideNavTopContent = new System.Windows.Forms.Panel();
             this.btLogin = new System.Windows.Forms.Button();
             this.btAddCat = new System.Windows.Forms.Button();
@@ -45,10 +47,10 @@ namespace LowaPass
             this.displayContent = new System.Windows.Forms.Panel();
             this.NavBorderBottom = new System.Windows.Forms.Panel();
             this.SideNavRightBorder = new System.Windows.Forms.Panel();
-            this.settings = new System.Windows.Forms.PictureBox();
-            this.information = new System.Windows.Forms.PictureBox();
             this.SideNav.SuspendLayout();
             this.SideNavFooter.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.information)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.settings)).BeginInit();
             this.SideNavTopContent.SuspendLayout();
             this.Navbar.SuspendLayout();
             this.SubOptionBox.SuspendLayout();
@@ -56,8 +58,6 @@ namespace LowaPass
             ((System.ComponentModel.ISupportInitialize)(this.minimize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.close)).BeginInit();
             this.displayContent.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.settings)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.information)).BeginInit();
             this.SuspendLayout();
             // 
             // SideNav
@@ -107,6 +107,33 @@ namespace LowaPass
             this.SideNavFooter.Name = "SideNavFooter";
             this.SideNavFooter.Size = new System.Drawing.Size(230, 50);
             this.SideNavFooter.TabIndex = 1;
+            // 
+            // information
+            // 
+            this.information.Dock = System.Windows.Forms.DockStyle.Right;
+            this.information.Image = ((System.Drawing.Image)(resources.GetObject("information.Image")));
+            this.information.Location = new System.Drawing.Point(171, 0);
+            this.information.Name = "information";
+            this.information.Size = new System.Drawing.Size(59, 50);
+            this.information.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.information.TabIndex = 1;
+            this.information.TabStop = false;
+            this.information.Click += new System.EventHandler(this.information_Click);
+            this.information.MouseEnter += new System.EventHandler(this.information_MouseEnter);
+            this.information.MouseLeave += new System.EventHandler(this.information_MouseLeave);
+            // 
+            // settings
+            // 
+            this.settings.Dock = System.Windows.Forms.DockStyle.Left;
+            this.settings.Image = ((System.Drawing.Image)(resources.GetObject("settings.Image")));
+            this.settings.Location = new System.Drawing.Point(0, 0);
+            this.settings.Name = "settings";
+            this.settings.Size = new System.Drawing.Size(59, 50);
+            this.settings.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.settings.TabIndex = 0;
+            this.settings.TabStop = false;
+            this.settings.MouseEnter += new System.EventHandler(this.settings_MouseEnter);
+            this.settings.MouseLeave += new System.EventHandler(this.settings_MouseLeave);
             // 
             // SideNavTopContent
             // 
@@ -247,28 +274,6 @@ namespace LowaPass
             this.SideNavRightBorder.Size = new System.Drawing.Size(4, 700);
             this.SideNavRightBorder.TabIndex = 2;
             // 
-            // settings
-            // 
-            this.settings.Dock = System.Windows.Forms.DockStyle.Left;
-            this.settings.Image = ((System.Drawing.Image)(resources.GetObject("settings.Image")));
-            this.settings.Location = new System.Drawing.Point(0, 0);
-            this.settings.Name = "settings";
-            this.settings.Size = new System.Drawing.Size(59, 50);
-            this.settings.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.settings.TabIndex = 0;
-            this.settings.TabStop = false;
-            // 
-            // information
-            // 
-            this.information.Dock = System.Windows.Forms.DockStyle.Right;
-            this.information.Image = ((System.Drawing.Image)(resources.GetObject("information.Image")));
-            this.information.Location = new System.Drawing.Point(171, 0);
-            this.information.Name = "information";
-            this.information.Size = new System.Drawing.Size(59, 50);
-            this.information.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.information.TabIndex = 1;
-            this.information.TabStop = false;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -283,6 +288,8 @@ namespace LowaPass
             this.Text = "Form1";
             this.SideNav.ResumeLayout(false);
             this.SideNavFooter.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.information)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.settings)).EndInit();
             this.SideNavTopContent.ResumeLayout(false);
             this.Navbar.ResumeLayout(false);
             this.SubOptionBox.ResumeLayout(false);
@@ -290,8 +297,6 @@ namespace LowaPass
             ((System.ComponentModel.ISupportInitialize)(this.minimize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.close)).EndInit();
             this.displayContent.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.settings)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.information)).EndInit();
             this.ResumeLayout(false);
 
         }

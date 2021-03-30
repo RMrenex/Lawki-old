@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LowaPasswd.forms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,11 +14,14 @@ namespace LowaPass
 {
     public partial class MainForm : Form
     {
-
         public static MainForm instance;
+
+        private InformationForm informationForm;
+        private CategorieForm categorieForm;
+        private Form currentForm = null;
         public Panel pannelCategorieDisplayer;
-        public const int WM_NCLBUTTONDOWN = 0xA1;
-        public const int HT_CAPTION = 0x2;
+        private const int WM_NCLBUTTONDOWN = 0xA1;
+        private const int HT_CAPTION = 0x2;
 
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
@@ -77,12 +81,17 @@ namespace LowaPass
 
         private void btShowFormCategorie_Click(object sender, EventArgs e)
         {
-            AddCategorieForm categorieForm = new AddCategorieForm();
+            updateForm();
+
+            categorieForm = new CategorieForm();
             categorieForm.TopLevel = false;
             categorieForm.Dock = DockStyle.Fill;
             categorieForm.BackColor = displayContent.BackColor;
+
             this.displayContent.Controls.Add(categorieForm);
             categorieForm.Show();
+
+            currentForm = categorieForm;
         }
 
         private void Navbar_MouseDown(object sender, MouseEventArgs e)
@@ -99,6 +108,48 @@ namespace LowaPass
 
             ControlPaint.DrawBorder(e.Graphics, this.categorieDisplayer.ClientRectangle, Color.Transparent, 0, ButtonBorderStyle.None,
                Color.FromArgb(252, 163, 17), 1, ButtonBorderStyle.Solid, Color.Transparent, 0, ButtonBorderStyle.None, Color.Transparent, 0, ButtonBorderStyle.None);
+        }
+
+        private void information_MouseEnter(object sender, EventArgs e)
+        {
+            information.BackColor = Color.FromArgb(11, 19, 43);
+        }
+
+        private void information_MouseLeave(object sender, EventArgs e)
+        {
+            information.BackColor = Color.FromArgb(252, 163, 17);
+        }
+
+        private void settings_MouseEnter(object sender, EventArgs e)
+        {
+            settings.BackColor = Color.FromArgb(11, 19, 43);
+        }
+
+        private void settings_MouseLeave(object sender, EventArgs e)
+        {
+            settings.BackColor = Color.FromArgb(252, 163, 17);
+        }
+
+        private void information_Click(object sender, EventArgs e)
+        {
+            updateForm();
+
+            informationForm = new InformationForm();
+            informationForm.TopLevel = false;
+            informationForm.Dock = DockStyle.Fill;
+            informationForm.BackColor = displayContent.BackColor;
+
+            this.displayContent.Controls.Add(informationForm);
+            informationForm.Show();
+
+            currentForm = informationForm;
+        }
+
+        private void updateForm() {
+
+            if (currentForm != null) {
+                this.displayContent.Controls.Remove(currentForm);
+            }
         }
     }
 }
