@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -63,6 +65,29 @@ namespace LowaPasswd.models
             {
                 Console.WriteLine(e.ToString());
             }
+        }
+
+        public static void writeInFile(List<Categorie> categories) {
+
+            using (StreamWriter file = File.CreateText(credentialsFilePath))
+            {
+                JsonSerializer serializer = new JsonSerializer();
+                //serialize object directly into file stream
+                serializer.Serialize(file, categories);
+            }
+        }
+
+        public static List<Categorie> loadDatabaseFile() {
+
+            var categories = new List<Categorie>();
+
+            using (StreamReader reader = new StreamReader(credentialsFilePath)) {
+
+                string json = reader.ReadToEnd();
+                categories = JsonConvert.DeserializeObject<List<Categorie>>(json);
+            }
+
+            return categories;
         }
 
     }
