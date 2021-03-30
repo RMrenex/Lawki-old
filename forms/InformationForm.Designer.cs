@@ -82,7 +82,7 @@ namespace LowaPasswd.forms
             this.labelContent.Size = new System.Drawing.Size(315, 144);
             this.labelContent.TabIndex = 4;
             this.labelContent.Text = "Auteur : RMrenex\r\nVersion : 1.0.0\r\nC# : .NET Framework 4.8\r\nSystème d\'exploitatio" +
-    "n : Windows 10\r\n@ 2021 Lowarya\r\n\r\n";
+    "n : Windows 10\r\n© 2021 Lowarya\r\n\r\n";
             this.labelContent.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // InformationForm
