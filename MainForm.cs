@@ -1,4 +1,5 @@
 ﻿using LowaPasswd.forms;
+using LowaPasswd.models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
