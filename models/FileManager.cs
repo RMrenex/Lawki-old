@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using LowaPasswd.forms;
+using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -67,13 +68,13 @@ namespace LowaPasswd.models
             }
         }
 
-        public static void writeInFile(List<Categorie> categories) {
+        public static void writeInFile() {
 
             using (StreamWriter file = File.CreateText(credentialsFilePath))
             {
                 JsonSerializer serializer = new JsonSerializer();
                 //serialize object directly into file stream
-                serializer.Serialize(file, categories);
+                serializer.Serialize(file, Categorie.Categories_);
             }
         }
 
@@ -86,7 +87,6 @@ namespace LowaPasswd.models
                 string json = reader.ReadToEnd();
                 categories = JsonConvert.DeserializeObject<List<Categorie>>(json);
             }
-
             return categories;
         }
 
