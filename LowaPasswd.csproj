@@ -60,11 +60,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="forms\CategorieForm.cs">
+    <Compile Include="forms\AddCategorieForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="forms\CategorieForm.designer.cs">
-      <DependentUpon>CategorieForm.cs</DependentUpon>
+    <Compile Include="forms\AddCategorieForm.designer.cs">
+      <DependentUpon>AddCategorieForm.cs</DependentUpon>
     </Compile>
     <Compile Include="forms\InformationForm.cs">
       <SubType>Form</SubType>
@@ -90,6 +90,12 @@
     <Compile Include="forms\SettingsForm.Designer.cs">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="forms\ShowCategorieForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\ShowCategorieForm.Designer.cs">
+      <DependentUpon>ShowCategorieForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,8 +107,8 @@
     <Compile Include="models\FileManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="forms\CategorieForm.resx">
-      <DependentUpon>CategorieForm.cs</DependentUpon>
+    <EmbeddedResource Include="forms\AddCategorieForm.resx">
+      <DependentUpon>AddCategorieForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\InformationForm.resx">
       <DependentUpon>InformationForm.cs</DependentUpon>
@@ -115,6 +121,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="forms\SettingsForm.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\ShowCategorieForm.resx">
+      <DependentUpon>ShowCategorieForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
