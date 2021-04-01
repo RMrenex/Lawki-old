@@ -18,7 +18,7 @@ namespace LowaPass
         public static MainForm instance;
 
         private InformationForm informationForm;
-        private CategorieForm categorieForm;
+        private AddCategorieForm categorieForm;
         private Form currentForm = null;
         public Panel pannelCategorieDisplayer;
         private const int WM_NCLBUTTONDOWN = 0xA1;
@@ -84,7 +84,7 @@ namespace LowaPass
         {
             updateForm();
 
-            categorieForm = new CategorieForm();
+            categorieForm = new AddCategorieForm();
             categorieForm.TopLevel = false;
             categorieForm.Dock = DockStyle.Fill;
             categorieForm.BackColor = displayContent.BackColor;
