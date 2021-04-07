@@ -19,8 +19,9 @@ namespace LowaPass
 
         private InformationForm informationForm;
         private AddCategorieForm categorieForm;
-        private Form currentForm = null;
+        public Form currentForm = null;
         public Panel pannelCategorieDisplayer;
+        public Panel displayContent_;
         private const int WM_NCLBUTTONDOWN = 0xA1;
         private const int HT_CAPTION = 0x2;
 
@@ -45,6 +46,7 @@ namespace LowaPass
             InitializeComponent();
             instance = this;
             pannelCategorieDisplayer = categorieDisplayer;
+            displayContent_ = displayContent;
             this.categorieDisplayer.Paint += new PaintEventHandler(this.categorieDisplayer_Paint);
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 5, 5));
             metroScrollBar.Scroll += (sender, e) => { categorieDisplayer.VerticalScroll.Value = metroScrollBar.Value; };
@@ -146,7 +148,7 @@ namespace LowaPass
             currentForm = informationForm;
         }
 
-        private void updateForm() {
+        public void updateForm() {
 
             if (currentForm != null) {
                 this.displayContent.Controls.Remove(currentForm);
