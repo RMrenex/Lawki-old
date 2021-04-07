@@ -1,4 +1,5 @@
-﻿using LowaPasswd.models;
+﻿using LowaPasswd.forms;
+using LowaPasswd.models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -63,6 +64,25 @@ namespace LowaPass
             button.Dock = DockStyle.Top;
             button.BackColor = Color.FromArgb(11, 19, 43);
             button.Height = 50;
+
+            button.Click += (s, evt) => {
+
+                MainForm.instance.updateForm();
+
+                ShowCategorieForm showCategorieForm = new ShowCategorieForm();
+                showCategorieForm.TopLevel = false;
+                showCategorieForm.Dock = DockStyle.Fill;
+                showCategorieForm.BackColor = MainForm.instance.displayContent_.BackColor;
+
+                MainForm.instance.displayContent_.Controls.Add(showCategorieForm);
+                showCategorieForm.Show();
+
+                MainForm.instance.currentForm = showCategorieForm;
+
+                //Categorie categorie = (Categorie)Categorie.Categories_.Select(categorie_ => categorie_.Name_.Equals(button.Text));
+                //categorie.Credentials_.ForEach(credential => { });
+
+            };
 
             MainForm.instance.pannelCategorieDisplayer.Controls.Add(button);
             Categorie.Categories_.Add(new Categorie(inputLogin.Text, new List<Credential>()));
