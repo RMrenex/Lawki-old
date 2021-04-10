@@ -97,22 +97,22 @@ namespace LowaPass
 
         private void information_MouseEnter(object sender, EventArgs e)
         {
-            information.BackColor = Color.FromArgb(11, 19, 43);
+            information.Image = Image.FromFile("C:/Users/Steven/source/repos/LowaPasswd/icons/information_hover.png");
         }
 
         private void information_MouseLeave(object sender, EventArgs e)
         {
-            information.BackColor = Color.FromArgb(252, 163, 17);
+            information.Image = Image.FromFile("C:/Users/Steven/source/repos/LowaPasswd/icons/information.png");
         }
 
         private void settings_MouseEnter(object sender, EventArgs e)
         {
-            settings.BackColor = Color.FromArgb(11, 19, 43);
+            settings.Image = Image.FromFile("C:/Users/Steven/source/repos/LowaPasswd/icons/settings_hover.png");
         }
 
         private void settings_MouseLeave(object sender, EventArgs e)
         {
-            settings.BackColor = Color.FromArgb(252, 163, 17);
+            settings.Image = Image.FromFile("C:/Users/Steven/source/repos/LowaPasswd/icons/settings.png");
         }
 
         private void information_Click(object sender, EventArgs e)
@@ -178,7 +178,7 @@ namespace LowaPass
         private void addCategorieButton_Click(object sender, EventArgs e)
         {
 
-            if (inputAddCategorieButton.Text == "") {
+            if (string.IsNullOrWhiteSpace(inputAddCategorieButton.Text)) {
                 labelWarning.Text = "Erreur : La catégorie ne peux pas être vide";
                 labelWarning.Visible = true;
                 hideWarning(3000);
@@ -221,9 +221,39 @@ namespace LowaPass
 
             };
 
-            pannelCategorieDisplayer.Controls.Add(button);
+            buildCategorie(inputAddCategorieButton.Text);
             Categorie.Categories_.Add(new Categorie(inputAddCategorieButton.Text, new List<Credential>()));
             inputAddCategorieButton.ResetText();
+
+        }
+
+        private void buildCategorie(string name) {
+
+            Panel panel = new Panel()
+            {
+                Name = "panel_" + name,
+                Dock = DockStyle.Top,
+                Height = 50
+            };
+
+            Button button = new Button();
+            button.Name = "bt_" + name;
+            button.Text = name;
+            button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            button.FlatAppearance.BorderSize = 0;
+            button.Dock = DockStyle.Left;
+            button.BackColor = Color.FromArgb(11, 19, 43);
+            button.Width = 180;
+
+            PictureBox pictureBox = new PictureBox();
+            pictureBox.Name = "picture_" + name;
+            pictureBox.Dock = DockStyle.Fill;
+            pictureBox.Image = Image.FromFile("C:/Users/Steven/source/repos/LowaPasswd/icons/delete.png");
+            pictureBox.SizeMode = PictureBoxSizeMode.CenterImage;
+
+            categorieDisplayer.Controls.Add(panel);
+            panel.Controls.Add(button);
+            panel.Controls.Add(pictureBox);
 
         }
     }
