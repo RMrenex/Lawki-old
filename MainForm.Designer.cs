@@ -46,6 +46,7 @@ namespace LowaPass
             this.displayContent = new System.Windows.Forms.Panel();
             this.labelWarning = new MetroFramework.Controls.MetroLabel();
             this.bottomPanelAddCategorie = new System.Windows.Forms.Panel();
+            this.labelAddCategorie = new System.Windows.Forms.Label();
             this.addCategorieButton = new System.Windows.Forms.PictureBox();
             this.inputAddCategorieButton = new System.Windows.Forms.TextBox();
             this.NavBorderBottom = new System.Windows.Forms.Panel();
@@ -266,6 +267,7 @@ namespace LowaPass
             // bottomPanelAddCategorie
             // 
             this.bottomPanelAddCategorie.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(163)))), ((int)(((byte)(17)))));
+            this.bottomPanelAddCategorie.Controls.Add(this.labelAddCategorie);
             this.bottomPanelAddCategorie.Controls.Add(this.addCategorieButton);
             this.bottomPanelAddCategorie.Controls.Add(this.inputAddCategorieButton);
             this.bottomPanelAddCategorie.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -274,10 +276,23 @@ namespace LowaPass
             this.bottomPanelAddCategorie.Size = new System.Drawing.Size(966, 50);
             this.bottomPanelAddCategorie.TabIndex = 4;
             // 
+            // labelAddCategorie
+            // 
+            this.labelAddCategorie.BackColor = System.Drawing.Color.Transparent;
+            this.labelAddCategorie.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.labelAddCategorie.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelAddCategorie.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(33)))), ((int)(((byte)(61)))));
+            this.labelAddCategorie.Location = new System.Drawing.Point(136, 3);
+            this.labelAddCategorie.Name = "labelAddCategorie";
+            this.labelAddCategorie.Size = new System.Drawing.Size(255, 44);
+            this.labelAddCategorie.TabIndex = 2;
+            this.labelAddCategorie.Text = "AJOUTER UNE CATEGORIE";
+            this.labelAddCategorie.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // addCategorieButton
             // 
             this.addCategorieButton.Image = ((System.Drawing.Image)(resources.GetObject("addCategorieButton.Image")));
-            this.addCategorieButton.Location = new System.Drawing.Point(593, 3);
+            this.addCategorieButton.Location = new System.Drawing.Point(657, 3);
             this.addCategorieButton.Name = "addCategorieButton";
             this.addCategorieButton.Size = new System.Drawing.Size(44, 44);
             this.addCategorieButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -293,7 +308,7 @@ namespace LowaPass
             this.inputAddCategorieButton.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.inputAddCategorieButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.inputAddCategorieButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(163)))), ((int)(((byte)(17)))));
-            this.inputAddCategorieButton.Location = new System.Drawing.Point(333, 3);
+            this.inputAddCategorieButton.Location = new System.Drawing.Point(397, 3);
             this.inputAddCategorieButton.Multiline = true;
             this.inputAddCategorieButton.Name = "inputAddCategorieButton";
             this.inputAddCategorieButton.Size = new System.Drawing.Size(254, 44);
@@ -368,6 +383,7 @@ namespace LowaPass
         private System.Windows.Forms.TextBox inputAddCategorieButton;
         private System.Windows.Forms.PictureBox addCategorieButton;
         private MetroFramework.Controls.MetroLabel labelWarning;
+        private System.Windows.Forms.Label labelAddCategorie;
     }
 }
 
