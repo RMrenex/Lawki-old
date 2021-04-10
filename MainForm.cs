@@ -8,6 +8,7 @@ using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -18,10 +19,8 @@ namespace LowaPass
         public static MainForm instance;
 
         private InformationForm informationForm;
-        private AddCategorieForm categorieForm;
         public Form currentForm = null;
         public Panel pannelCategorieDisplayer;
-        public Panel displayContent_;
         private const int WM_NCLBUTTONDOWN = 0xA1;
         private const int HT_CAPTION = 0x2;
 
@@ -46,7 +45,6 @@ namespace LowaPass
             InitializeComponent();
             instance = this;
             pannelCategorieDisplayer = categorieDisplayer;
-            displayContent_ = displayContent;
             this.categorieDisplayer.Paint += new PaintEventHandler(this.categorieDisplayer_Paint);
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 5, 5));
             metroScrollBar.Scroll += (sender, e) => { categorieDisplayer.VerticalScroll.Value = metroScrollBar.Value; };
@@ -82,21 +80,6 @@ namespace LowaPass
             minimize.BackColor = Color.FromArgb(20, 33, 61);
         }
 
-        private void btShowFormCategorie_Click(object sender, EventArgs e)
-        {
-            updateForm();
-
-            categorieForm = new AddCategorieForm();
-            categorieForm.TopLevel = false;
-            categorieForm.Dock = DockStyle.Fill;
-            categorieForm.BackColor = displayContent.BackColor;
-
-            this.displayContent.Controls.Add(categorieForm);
-            categorieForm.Show();
-
-            currentForm = categorieForm;
-        }
-
         private void Navbar_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
@@ -105,7 +88,6 @@ namespace LowaPass
                 SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
             }
         }
-
         private void categorieDisplayer_Paint(object sender, PaintEventArgs e)
         {
 
@@ -148,11 +130,101 @@ namespace LowaPass
             currentForm = informationForm;
         }
 
-        public void updateForm() {
+        private void updateForm() {
 
             if (currentForm != null) {
                 this.displayContent.Controls.Remove(currentForm);
             }
+        }
+
+        private void hideWarning(int longTime){
+
+            var timer = new Timer();
+            timer.Interval = longTime;
+
+            timer.Tick += (s, e) =>
+            {
+                labelWarning.Hide();
+                timer.Stop();
+            };
+
+            timer.Start();
+        }
+
+        private Boolean passwordSecurityThreshold(string password)
+        {
+
+            var expectedPasswordPattern = new Regex(@"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,15}$");
+            var isValidPassword = expectedPasswordPattern.IsMatch(password);
+
+            if (!isValidPassword)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        private void addCategorieButton_MouseEnter(object sender, EventArgs e)
+        {
+            addCategorieButton.Image = Image.FromFile("C:/Users/Steven/source/repos/LowaPasswd/icons/add_categorie_hover.png");
+        }
+
+        private void addCategorieButton_MouseLeave(object sender, EventArgs e)
+        {
+            addCategorieButton.Image = Image.FromFile("C:/Users/Steven/source/repos/LowaPasswd/icons/add_categorie.png");
+        }
+
+        private void addCategorieButton_Click(object sender, EventArgs e)
+        {
+
+            if (inputAddCategorieButton.Text == "") {
+                labelWarning.Text = "Erreur : La catégorie ne peux pas être vide";
+                labelWarning.Visible = true;
+                hideWarning(3000);
+                return;
+            }
+
+            if (Categorie.Categories_.Find(categorie => categorie.Name_ == inputAddCategorieButton.Text) != null)
+            {
+
+                labelWarning.Text = "Erreur : Ce nom de catégorie est déjà utilisé";
+                labelWarning.Visible = true;
+                hideWarning(5000);
+                return;
+            }
+
+            Button button = new Button();
+            button.Text = inputAddCategorieButton.Text;
+            button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            button.FlatAppearance.BorderSize = 0;
+            button.Dock = DockStyle.Top;
+            button.BackColor = Color.FromArgb(11, 19, 43);
+            button.Height = 50;
+
+            button.Click += (s, evt) => {
+
+                updateForm();
+
+                ShowCategorieForm showCategorieForm = new ShowCategorieForm();
+                showCategorieForm.TopLevel = false;
+                showCategorieForm.Dock = DockStyle.Fill;
+                showCategorieForm.BackColor = displayContent.BackColor;
+
+                displayContent.Controls.Add(showCategorieForm);
+                showCategorieForm.Show();
+
+                currentForm = showCategorieForm;
+
+                //Categorie categorie = (Categorie)Categorie.Categories_.Select(categorie_ => categorie_.Name_.Equals(button.Text));
+                //categorie.Credentials_.ForEach(credential => { });
+
+            };
+
+            pannelCategorieDisplayer.Controls.Add(button);
+            Categorie.Categories_.Add(new Categorie(inputAddCategorieButton.Text, new List<Credential>()));
+            inputAddCategorieButton.ResetText();
+
         }
     }
 }

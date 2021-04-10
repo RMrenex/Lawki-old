@@ -60,12 +60,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="forms\AddCategorieForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="forms\AddCategorieForm.designer.cs">
-      <DependentUpon>AddCategorieForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="forms\InformationForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,9 +101,6 @@
     <Compile Include="models\FileManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="forms\AddCategorieForm.resx">
-      <DependentUpon>AddCategorieForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="forms\InformationForm.resx">
       <DependentUpon>InformationForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -136,6 +127,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -155,7 +147,9 @@
   <ItemGroup>
     <Content Include="icons\account.png" />
     <Content Include="icons\add.png" />
+    <Content Include="icons\add_categorie.png" />
     <Content Include="icons\close.png" />
+    <Content Include="icons\add_categorie_hover.png" />
     <Content Include="icons\information.png" />
     <Content Include="icons\information_hover.png" />
     <Content Include="icons\line.png" />

@@ -38,13 +38,16 @@ namespace LowaPass
             this.settings = new System.Windows.Forms.PictureBox();
             this.SideNavTopContent = new System.Windows.Forms.Panel();
             this.btLogin = new System.Windows.Forms.Button();
-            this.btAddCat = new System.Windows.Forms.Button();
             this.Navbar = new System.Windows.Forms.Panel();
             this.SubOptionBox = new System.Windows.Forms.Panel();
             this.OptionBox = new System.Windows.Forms.Panel();
             this.minimize = new System.Windows.Forms.PictureBox();
             this.close = new System.Windows.Forms.PictureBox();
             this.displayContent = new System.Windows.Forms.Panel();
+            this.labelWarning = new MetroFramework.Controls.MetroLabel();
+            this.bottomPanelAddCategorie = new System.Windows.Forms.Panel();
+            this.addCategorieButton = new System.Windows.Forms.PictureBox();
+            this.inputAddCategorieButton = new System.Windows.Forms.TextBox();
             this.NavBorderBottom = new System.Windows.Forms.Panel();
             this.SideNavRightBorder = new System.Windows.Forms.Panel();
             this.SideNav.SuspendLayout();
@@ -58,6 +61,8 @@ namespace LowaPass
             ((System.ComponentModel.ISupportInitialize)(this.minimize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.close)).BeginInit();
             this.displayContent.SuspendLayout();
+            this.bottomPanelAddCategorie.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.addCategorieButton)).BeginInit();
             this.SuspendLayout();
             // 
             // SideNav
@@ -139,7 +144,6 @@ namespace LowaPass
             // 
             this.SideNavTopContent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(163)))), ((int)(((byte)(17)))));
             this.SideNavTopContent.Controls.Add(this.btLogin);
-            this.SideNavTopContent.Controls.Add(this.btAddCat);
             this.SideNavTopContent.Dock = System.Windows.Forms.DockStyle.Top;
             this.SideNavTopContent.Location = new System.Drawing.Point(0, 0);
             this.SideNavTopContent.Name = "SideNavTopContent";
@@ -153,31 +157,15 @@ namespace LowaPass
             this.btLogin.FlatAppearance.BorderSize = 0;
             this.btLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btLogin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(163)))), ((int)(((byte)(17)))));
+            this.btLogin.Image = ((System.Drawing.Image)(resources.GetObject("btLogin.Image")));
             this.btLogin.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btLogin.Location = new System.Drawing.Point(0, 87);
+            this.btLogin.Location = new System.Drawing.Point(0, 130);
             this.btLogin.Margin = new System.Windows.Forms.Padding(0);
             this.btLogin.Name = "btLogin";
             this.btLogin.Size = new System.Drawing.Size(230, 43);
             this.btLogin.TabIndex = 0;
             this.btLogin.Text = "Connexion/Inscription";
             this.btLogin.UseVisualStyleBackColor = false;
-            // 
-            // btAddCat
-            // 
-            this.btAddCat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(19)))), ((int)(((byte)(43)))));
-            this.btAddCat.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btAddCat.FlatAppearance.BorderSize = 0;
-            this.btAddCat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btAddCat.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(163)))), ((int)(((byte)(17)))));
-            this.btAddCat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btAddCat.Location = new System.Drawing.Point(0, 130);
-            this.btAddCat.Margin = new System.Windows.Forms.Padding(3, 4, 3, 3);
-            this.btAddCat.Name = "btAddCat";
-            this.btAddCat.Size = new System.Drawing.Size(230, 43);
-            this.btAddCat.TabIndex = 1;
-            this.btAddCat.Text = "Ajouter une catégorie";
-            this.btAddCat.UseVisualStyleBackColor = false;
-            this.btAddCat.Click += new System.EventHandler(this.btShowFormCategorie_Click);
             // 
             // Navbar
             // 
@@ -248,6 +236,8 @@ namespace LowaPass
             // displayContent
             // 
             this.displayContent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(33)))), ((int)(((byte)(61)))));
+            this.displayContent.Controls.Add(this.labelWarning);
+            this.displayContent.Controls.Add(this.bottomPanelAddCategorie);
             this.displayContent.Controls.Add(this.NavBorderBottom);
             this.displayContent.Controls.Add(this.SideNavRightBorder);
             this.displayContent.Controls.Add(this.Navbar);
@@ -256,6 +246,58 @@ namespace LowaPass
             this.displayContent.Name = "displayContent";
             this.displayContent.Size = new System.Drawing.Size(970, 700);
             this.displayContent.TabIndex = 2;
+            // 
+            // labelWarning
+            // 
+            this.labelWarning.BackColor = System.Drawing.Color.Transparent;
+            this.labelWarning.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.labelWarning.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.labelWarning.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(163)))), ((int)(((byte)(17)))));
+            this.labelWarning.Location = new System.Drawing.Point(4, 620);
+            this.labelWarning.Name = "labelWarning";
+            this.labelWarning.Size = new System.Drawing.Size(966, 30);
+            this.labelWarning.TabIndex = 5;
+            this.labelWarning.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelWarning.UseCustomBackColor = true;
+            this.labelWarning.UseCustomForeColor = true;
+            this.labelWarning.Visible = false;
+            this.labelWarning.WrapToLine = true;
+            // 
+            // bottomPanelAddCategorie
+            // 
+            this.bottomPanelAddCategorie.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(163)))), ((int)(((byte)(17)))));
+            this.bottomPanelAddCategorie.Controls.Add(this.addCategorieButton);
+            this.bottomPanelAddCategorie.Controls.Add(this.inputAddCategorieButton);
+            this.bottomPanelAddCategorie.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.bottomPanelAddCategorie.Location = new System.Drawing.Point(4, 650);
+            this.bottomPanelAddCategorie.Name = "bottomPanelAddCategorie";
+            this.bottomPanelAddCategorie.Size = new System.Drawing.Size(966, 50);
+            this.bottomPanelAddCategorie.TabIndex = 4;
+            // 
+            // addCategorieButton
+            // 
+            this.addCategorieButton.Image = ((System.Drawing.Image)(resources.GetObject("addCategorieButton.Image")));
+            this.addCategorieButton.Location = new System.Drawing.Point(593, 3);
+            this.addCategorieButton.Name = "addCategorieButton";
+            this.addCategorieButton.Size = new System.Drawing.Size(44, 44);
+            this.addCategorieButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.addCategorieButton.TabIndex = 1;
+            this.addCategorieButton.TabStop = false;
+            this.addCategorieButton.Click += new System.EventHandler(this.addCategorieButton_Click);
+            this.addCategorieButton.MouseEnter += new System.EventHandler(this.addCategorieButton_MouseEnter);
+            this.addCategorieButton.MouseLeave += new System.EventHandler(this.addCategorieButton_MouseLeave);
+            // 
+            // inputAddCategorieButton
+            // 
+            this.inputAddCategorieButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(33)))), ((int)(((byte)(61)))));
+            this.inputAddCategorieButton.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.inputAddCategorieButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.inputAddCategorieButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(163)))), ((int)(((byte)(17)))));
+            this.inputAddCategorieButton.Location = new System.Drawing.Point(333, 3);
+            this.inputAddCategorieButton.Multiline = true;
+            this.inputAddCategorieButton.Name = "inputAddCategorieButton";
+            this.inputAddCategorieButton.Size = new System.Drawing.Size(254, 44);
+            this.inputAddCategorieButton.TabIndex = 0;
             // 
             // NavBorderBottom
             // 
@@ -297,6 +339,9 @@ namespace LowaPass
             ((System.ComponentModel.ISupportInitialize)(this.minimize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.close)).EndInit();
             this.displayContent.ResumeLayout(false);
+            this.bottomPanelAddCategorie.ResumeLayout(false);
+            this.bottomPanelAddCategorie.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.addCategorieButton)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -311,7 +356,6 @@ namespace LowaPass
         private System.Windows.Forms.PictureBox close;
         private System.Windows.Forms.Panel OptionBox;
         private System.Windows.Forms.Button btLogin;
-        private System.Windows.Forms.Button btAddCat;
         private System.Windows.Forms.Panel displayContent;
         private System.Windows.Forms.Panel SideNavRightBorder;
         private System.Windows.Forms.Panel NavBorderBottom;
@@ -320,6 +364,10 @@ namespace LowaPass
         private System.Windows.Forms.Panel categorieDisplayer;
         private System.Windows.Forms.PictureBox information;
         private System.Windows.Forms.PictureBox settings;
+        private System.Windows.Forms.Panel bottomPanelAddCategorie;
+        private System.Windows.Forms.TextBox inputAddCategorieButton;
+        private System.Windows.Forms.PictureBox addCategorieButton;
+        private MetroFramework.Controls.MetroLabel labelWarning;
     }
 }
 
