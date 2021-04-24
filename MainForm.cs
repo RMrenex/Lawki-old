@@ -178,6 +178,13 @@ namespace LowaPass
         private void addCategorieButton_Click(object sender, EventArgs e)
         {
 
+            if (inputAddCategorieButton.Lines.Length > 1) {
+                labelWarning.Text = "Erreur : vous ne pouvez pas écrire sur plusieurs lignes";
+                labelWarning.Visible = true;
+                hideWarning(3000);
+                return;
+            }
+
             if (string.IsNullOrWhiteSpace(inputAddCategorieButton.Text)) {
                 labelWarning.Text = "Erreur : La catégorie ne peux pas être vide";
                 labelWarning.Visible = true;
@@ -185,7 +192,7 @@ namespace LowaPass
                 return;
             }
 
-            if (Categorie.Categories_.Find(categorie => categorie.Name_ == inputAddCategorieButton.Text) != null)
+            if (Categorie.Categories_.Find(categorie => categorie.Name_.ToUpper().Equals(inputAddCategorieButton.Text.ToUpper())) != null)
             {
 
                 labelWarning.Text = "Erreur : Ce nom de catégorie est déjà utilisé";
@@ -248,13 +255,38 @@ namespace LowaPass
             PictureBox pictureBox = new PictureBox();
             pictureBox.Name = "picture_" + name;
             pictureBox.Dock = DockStyle.Fill;
-            pictureBox.Image = Image.FromFile("C:/Users/Steven/source/repos/LowaPasswd/icons/delete.png");
+            pictureBox.Image = new Bitmap(LowaPasswd.Properties.Resources.delete);
             pictureBox.SizeMode = PictureBoxSizeMode.CenterImage;
+            pictureBox.BackColor = Color.FromArgb(11, 19, 43);
+
+            pictureBox.Click += (s, evt) => {
+
+                deleteCategorie(name);
+
+            };
 
             categorieDisplayer.Controls.Add(panel);
-            panel.Controls.Add(button);
             panel.Controls.Add(pictureBox);
+            panel.Controls.Add(button);
+        }
+        private void deleteCategorie(string name) {
 
+            foreach(Control control in categorieDisplayer.Controls) {
+
+                if (control is Panel) {
+
+                    if (control.Name.Equals("panel_" + name)) {
+
+                        Panel panelToBeDelete = (Panel)control;
+                        categorieDisplayer.Controls.Remove(control);
+                        Categorie categorieToDelete = Categorie.Categories_.Find(Categorie => Categorie.Name_.Equals(name));
+                        Categorie.Categories_.Remove(categorieToDelete);
+
+                    }
+                }
+
+            }
+        
         }
     }
 }

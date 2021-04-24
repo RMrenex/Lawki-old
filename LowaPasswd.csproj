@@ -156,6 +156,7 @@
     <Content Include="icons\line.png" />
     <Content Include="icons\settings.png" />
     <Content Include="icons\settings_hover.png" />
+    <None Include="Resources\delete_cat.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
