@@ -11,10 +11,14 @@ using System.Windows.Forms;
 namespace LowaPasswd.forms
 {
     public partial class ShowCategorieForm : Form
+
     {
+
+        public FlowLayoutPanel flow;
         public ShowCategorieForm()
         {
             InitializeComponent();
+            flow = flowLayoutPanel;
         }
     }
 }
