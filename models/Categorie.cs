@@ -21,6 +21,6 @@ namespace LowaPasswd.models
         internal static List<Categorie> Categories_ { get => categories_; }
         public string Name_ { get => name_; set => name_ = value; }
         internal List<Credential> Credentials_ { get => credentials_; set => credentials_ = value; }
-        
+
     }
 }
