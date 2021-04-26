@@ -149,6 +149,8 @@
     <Content Include="icons\add.png" />
     <Content Include="icons\add_categorie_hover.png" />
     <Content Include="icons\add_categorie.png" />
+    <Content Include="icons\card_modify.png" />
+    <Content Include="icons\card_modify_hover.png" />
     <Content Include="icons\close.png" />
     <Content Include="icons\delete.png" />
     <Content Include="icons\information.png" />

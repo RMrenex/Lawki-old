@@ -201,35 +201,10 @@ namespace LowaPass
                 return;
             }
 
-            Button button = new Button();
-            button.Text = inputAddCategorieButton.Text;
-            button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            button.FlatAppearance.BorderSize = 0;
-            button.Dock = DockStyle.Top;
-            button.BackColor = Color.FromArgb(11, 19, 43);
-            button.Height = 50;
-
-            button.Click += (s, evt) => {
-
-                updateForm();
-
-                ShowCategorieForm showCategorieForm = new ShowCategorieForm();
-                showCategorieForm.TopLevel = false;
-                showCategorieForm.Dock = DockStyle.Fill;
-                showCategorieForm.BackColor = displayContent.BackColor;
-
-                displayContent.Controls.Add(showCategorieForm);
-                showCategorieForm.Show();
-
-                currentForm = showCategorieForm;
-
-                //Categorie categorie = (Categorie)Categorie.Categories_.Select(categorie_ => categorie_.Name_.Equals(button.Text));
-                //categorie.Credentials_.ForEach(credential => { });
-
-            };
-
+            List<Credential> cr = new List<Credential>();
+            cr.Add(new Credential("Mojang", "aa@dd.fr", "jdzoajazd"));
+            Categorie.Categories_.Add(new Categorie(inputAddCategorieButton.Text, cr));
             buildCategorie(inputAddCategorieButton.Text);
-            Categorie.Categories_.Add(new Categorie(inputAddCategorieButton.Text, new List<Credential>()));
             inputAddCategorieButton.ResetText();
 
         }
@@ -252,6 +227,33 @@ namespace LowaPass
             button.BackColor = Color.FromArgb(11, 19, 43);
             button.Width = 180;
 
+            button.Click += (sender, evt) => {
+
+                updateForm();
+
+                ShowCategorieForm showCategorieForm = new ShowCategorieForm();
+                showCategorieForm.TopLevel = false;
+                showCategorieForm.Dock = DockStyle.Fill;
+                showCategorieForm.BackColor = displayContent.BackColor;
+
+                displayContent.Controls.Add(showCategorieForm);
+                showCategorieForm.Show();
+
+                currentForm = showCategorieForm;
+
+                Categorie categorie = Categorie.Categories_.Find(categorie_ => categorie_.Name_.Equals(button.Text));
+
+                Console.WriteLine("YES");
+                if (categorie.Credentials_.Count > 0) {
+                    categorie.Credentials_.ForEach(credential => buildCredential(showCategorieForm.flow, credential.Label_, credential.Login_, credential.Password_));
+                    Console.WriteLine("IJININI");
+
+                }
+                Console.WriteLine("N?");
+
+            };
+
+
             PictureBox pictureBox = new PictureBox();
             pictureBox.Name = "picture_" + name;
             pictureBox.Dock = DockStyle.Fill;
@@ -259,11 +261,7 @@ namespace LowaPass
             pictureBox.SizeMode = PictureBoxSizeMode.CenterImage;
             pictureBox.BackColor = Color.FromArgb(11, 19, 43);
 
-            pictureBox.Click += (s, evt) => {
-
-                deleteCategorie(name);
-
-            };
+            pictureBox.Click += (sender, evt) => { deleteCategorie(name); };
 
             categorieDisplayer.Controls.Add(panel);
             panel.Controls.Add(pictureBox);
@@ -287,6 +285,104 @@ namespace LowaPass
 
             }
         
+        }
+
+        private void buildCredential(Panel panel, string label, string login , string password) {
+
+            //Card-panel
+            Panel cardPanel = new Panel() {
+                MinimumSize = new Size(475, 150),
+                BackColor = Color.FromArgb(11, 19, 43),
+                Name = "cardPanel" + label
+            };
+
+            //Card-Title-Panel
+            Panel cardTitlePanel = new Panel() {
+                Dock = DockStyle.Top,
+                BackColor = Color.FromArgb(252, 163, 17),
+                Name = "cardTitlePanel" + label
+            };
+
+            //Card-Input-Login
+            Panel cardLoginPanel = new Panel() {
+                Dock = DockStyle.Top,
+                BackColor = Color.FromArgb(11, 19, 43),
+                Name = "cardLoginPanel" + label
+
+            };
+            //Card-Input-Password
+            Panel cardPasswordPanel = new Panel() {
+                Dock = DockStyle.Top,
+                BackColor = Color.FromArgb(11, 19, 43),
+                Name = "cardPasswordPanel" + label
+            };
+
+            //Add sub panel to main panel
+            cardPanel.Controls.Add(cardTitlePanel);
+            cardPanel.Controls.Add(cardLoginPanel);
+            cardPanel.Controls.Add(cardPasswordPanel);
+
+            //Card title label
+            Label cardTitle = new Label() {
+                Name = "cardTitle" + label,
+                Text = label.ToUpper(),
+                Dock = DockStyle.Left,
+                Width = 430,
+                BorderStyle = BorderStyle.None,
+                TextAlign = ContentAlignment.MiddleCenter,
+                BackColor = Color.FromArgb(252, 163, 17),
+                Font = new Font("Arial", 14),
+                AutoSize = false
+            };
+
+            //Card delete icon
+            PictureBox pictureBox = new PictureBox() {
+                Name = "cardDeletePicture" + label,
+                Dock = DockStyle.Fill,
+                Image = new Bitmap(LowaPasswd.Properties.Resources.delete),
+                SizeMode = PictureBoxSizeMode.CenterImage,
+                BackColor = Color.Transparent        
+            };
+
+            //Add first line
+            cardTitlePanel.Controls.Add(cardTitle);
+            cardTitlePanel.Controls.Add(pictureBox);
+
+            TextBox textBox = new TextBox() {
+                Name = "cardLoginPanel" + label,
+                Dock = DockStyle.Left,
+                BackColor = Color.FromArgb(11, 19, 43),
+                Font = new Font("Arial", 14),
+                ForeColor = Color.FromArgb(252, 163, 17),
+                Text = login,
+                ReadOnly = true,
+                Multiline = true,
+                TextAlign = HorizontalAlignment.Center,
+                Width = 430,
+                BorderStyle = BorderStyle.None
+            };
+
+            pictureBox.Name = "cardModifyLoginPicture" + label;
+            pictureBox.Dock = DockStyle.Fill;
+            pictureBox.Image = new Bitmap(LowaPasswd.Properties.Resources.card_modify);
+
+            //Add second line
+            cardLoginPanel.Controls.Add(textBox);
+            cardLoginPanel.Controls.Add(pictureBox);
+
+            textBox.Name = "cardPasswordPanel" + label;
+            textBox.Text = password;
+            textBox.UseSystemPasswordChar = true;
+
+            //Add third line
+            pictureBox.Name = "cardModifyPasswordPicture" + label;
+            pictureBox.Dock = DockStyle.Fill;
+
+            cardPasswordPanel.Controls.Add(textBox);
+            cardPasswordPanel.Controls.Add(pictureBox);
+
+            panel.Controls.Add(cardPanel);
+
         }
     }
 }
