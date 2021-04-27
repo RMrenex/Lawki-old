@@ -29,41 +29,38 @@ namespace LowaPass
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.SideNav = new System.Windows.Forms.Panel();
             this.categorieDisplayer = new System.Windows.Forms.Panel();
             this.metroScrollBar = new MetroFramework.Controls.MetroScrollBar();
             this.SideNavFooter = new System.Windows.Forms.Panel();
-            this.information = new System.Windows.Forms.PictureBox();
-            this.settings = new System.Windows.Forms.PictureBox();
             this.SideNavTopContent = new System.Windows.Forms.Panel();
-            this.btLogin = new System.Windows.Forms.Button();
             this.Navbar = new System.Windows.Forms.Panel();
             this.SubOptionBox = new System.Windows.Forms.Panel();
             this.OptionBox = new System.Windows.Forms.Panel();
-            this.minimize = new System.Windows.Forms.PictureBox();
-            this.close = new System.Windows.Forms.PictureBox();
             this.displayContent = new System.Windows.Forms.Panel();
             this.labelWarning = new MetroFramework.Controls.MetroLabel();
             this.bottomPanelAddCategorie = new System.Windows.Forms.Panel();
             this.labelAddCategorie = new System.Windows.Forms.Label();
-            this.addCategorieButton = new System.Windows.Forms.PictureBox();
             this.inputAddCategorieButton = new System.Windows.Forms.TextBox();
             this.NavBorderBottom = new System.Windows.Forms.Panel();
             this.SideNavRightBorder = new System.Windows.Forms.Panel();
+            this.addCategorieButton = new System.Windows.Forms.PictureBox();
+            this.minimize = new System.Windows.Forms.PictureBox();
+            this.close = new System.Windows.Forms.PictureBox();
+            this.information = new System.Windows.Forms.PictureBox();
+            this.settings = new System.Windows.Forms.PictureBox();
             this.SideNav.SuspendLayout();
             this.SideNavFooter.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.information)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.settings)).BeginInit();
-            this.SideNavTopContent.SuspendLayout();
             this.Navbar.SuspendLayout();
             this.SubOptionBox.SuspendLayout();
             this.OptionBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.minimize)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.close)).BeginInit();
             this.displayContent.SuspendLayout();
             this.bottomPanelAddCategorie.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.addCategorieButton)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.minimize)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.close)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.information)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.settings)).BeginInit();
             this.SuspendLayout();
             // 
             // SideNav
@@ -114,59 +111,14 @@ namespace LowaPass
             this.SideNavFooter.Size = new System.Drawing.Size(230, 50);
             this.SideNavFooter.TabIndex = 1;
             // 
-            // information
-            // 
-            this.information.Dock = System.Windows.Forms.DockStyle.Right;
-            this.information.Image = ((System.Drawing.Image)(resources.GetObject("information.Image")));
-            this.information.Location = new System.Drawing.Point(171, 0);
-            this.information.Name = "information";
-            this.information.Size = new System.Drawing.Size(59, 50);
-            this.information.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.information.TabIndex = 1;
-            this.information.TabStop = false;
-            this.information.Click += new System.EventHandler(this.information_Click);
-            this.information.MouseEnter += new System.EventHandler(this.information_MouseEnter);
-            this.information.MouseLeave += new System.EventHandler(this.information_MouseLeave);
-            // 
-            // settings
-            // 
-            this.settings.Dock = System.Windows.Forms.DockStyle.Left;
-            this.settings.Image = ((System.Drawing.Image)(resources.GetObject("settings.Image")));
-            this.settings.Location = new System.Drawing.Point(0, 0);
-            this.settings.Name = "settings";
-            this.settings.Size = new System.Drawing.Size(59, 50);
-            this.settings.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.settings.TabIndex = 0;
-            this.settings.TabStop = false;
-            this.settings.MouseEnter += new System.EventHandler(this.settings_MouseEnter);
-            this.settings.MouseLeave += new System.EventHandler(this.settings_MouseLeave);
-            // 
             // SideNavTopContent
             // 
             this.SideNavTopContent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(163)))), ((int)(((byte)(17)))));
-            this.SideNavTopContent.Controls.Add(this.btLogin);
             this.SideNavTopContent.Dock = System.Windows.Forms.DockStyle.Top;
             this.SideNavTopContent.Location = new System.Drawing.Point(0, 0);
             this.SideNavTopContent.Name = "SideNavTopContent";
             this.SideNavTopContent.Size = new System.Drawing.Size(230, 173);
             this.SideNavTopContent.TabIndex = 0;
-            // 
-            // btLogin
-            // 
-            this.btLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(19)))), ((int)(((byte)(43)))));
-            this.btLogin.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btLogin.FlatAppearance.BorderSize = 0;
-            this.btLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btLogin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(163)))), ((int)(((byte)(17)))));
-            this.btLogin.Image = ((System.Drawing.Image)(resources.GetObject("btLogin.Image")));
-            this.btLogin.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btLogin.Location = new System.Drawing.Point(0, 130);
-            this.btLogin.Margin = new System.Windows.Forms.Padding(0);
-            this.btLogin.Name = "btLogin";
-            this.btLogin.Size = new System.Drawing.Size(230, 43);
-            this.btLogin.TabIndex = 0;
-            this.btLogin.Text = "Connexion/Inscription";
-            this.btLogin.UseVisualStyleBackColor = false;
             // 
             // Navbar
             // 
@@ -198,41 +150,6 @@ namespace LowaPass
             this.OptionBox.Name = "OptionBox";
             this.OptionBox.Size = new System.Drawing.Size(120, 22);
             this.OptionBox.TabIndex = 0;
-            // 
-            // minimize
-            // 
-            this.minimize.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(33)))), ((int)(((byte)(61)))));
-            this.minimize.Dock = System.Windows.Forms.DockStyle.Right;
-            this.minimize.ErrorImage = ((System.Drawing.Image)(resources.GetObject("minimize.ErrorImage")));
-            this.minimize.Image = ((System.Drawing.Image)(resources.GetObject("minimize.Image")));
-            this.minimize.InitialImage = null;
-            this.minimize.Location = new System.Drawing.Point(0, 0);
-            this.minimize.Name = "minimize";
-            this.minimize.Size = new System.Drawing.Size(60, 22);
-            this.minimize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.minimize.TabIndex = 2;
-            this.minimize.TabStop = false;
-            this.minimize.Click += new System.EventHandler(this.minimize_Click);
-            this.minimize.MouseEnter += new System.EventHandler(this.minimize_MouseEnter);
-            this.minimize.MouseLeave += new System.EventHandler(this.minimize_MouseLeave);
-            // 
-            // close
-            // 
-            this.close.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(33)))), ((int)(((byte)(61)))));
-            this.close.Dock = System.Windows.Forms.DockStyle.Right;
-            this.close.ErrorImage = ((System.Drawing.Image)(resources.GetObject("close.ErrorImage")));
-            this.close.Image = ((System.Drawing.Image)(resources.GetObject("close.Image")));
-            this.close.ImageLocation = " ";
-            this.close.InitialImage = null;
-            this.close.Location = new System.Drawing.Point(60, 0);
-            this.close.Name = "close";
-            this.close.Size = new System.Drawing.Size(60, 22);
-            this.close.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.close.TabIndex = 0;
-            this.close.TabStop = false;
-            this.close.Click += new System.EventHandler(this.close_Click);
-            this.close.MouseEnter += new System.EventHandler(this.close_Enter);
-            this.close.MouseLeave += new System.EventHandler(this.close_MouseLeave);
             // 
             // displayContent
             // 
@@ -282,36 +199,23 @@ namespace LowaPass
             this.labelAddCategorie.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.labelAddCategorie.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelAddCategorie.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(33)))), ((int)(((byte)(61)))));
-            this.labelAddCategorie.Location = new System.Drawing.Point(136, 3);
+            this.labelAddCategorie.Location = new System.Drawing.Point(121, 3);
             this.labelAddCategorie.Name = "labelAddCategorie";
             this.labelAddCategorie.Size = new System.Drawing.Size(255, 44);
             this.labelAddCategorie.TabIndex = 2;
             this.labelAddCategorie.Text = "AJOUTER UNE CATEGORIE";
             this.labelAddCategorie.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // addCategorieButton
-            // 
-            this.addCategorieButton.Image = ((System.Drawing.Image)(resources.GetObject("addCategorieButton.Image")));
-            this.addCategorieButton.Location = new System.Drawing.Point(657, 3);
-            this.addCategorieButton.Name = "addCategorieButton";
-            this.addCategorieButton.Size = new System.Drawing.Size(44, 44);
-            this.addCategorieButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.addCategorieButton.TabIndex = 1;
-            this.addCategorieButton.TabStop = false;
-            this.addCategorieButton.Click += new System.EventHandler(this.addCategorieButton_Click);
-            this.addCategorieButton.MouseEnter += new System.EventHandler(this.addCategorieButton_MouseEnter);
-            this.addCategorieButton.MouseLeave += new System.EventHandler(this.addCategorieButton_MouseLeave);
-            // 
             // inputAddCategorieButton
             // 
             this.inputAddCategorieButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(33)))), ((int)(((byte)(61)))));
             this.inputAddCategorieButton.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.inputAddCategorieButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.inputAddCategorieButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.inputAddCategorieButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(163)))), ((int)(((byte)(17)))));
-            this.inputAddCategorieButton.Location = new System.Drawing.Point(397, 3);
+            this.inputAddCategorieButton.Location = new System.Drawing.Point(382, 8);
             this.inputAddCategorieButton.Multiline = true;
             this.inputAddCategorieButton.Name = "inputAddCategorieButton";
-            this.inputAddCategorieButton.Size = new System.Drawing.Size(254, 44);
+            this.inputAddCategorieButton.Size = new System.Drawing.Size(254, 35);
             this.inputAddCategorieButton.TabIndex = 0;
             // 
             // NavBorderBottom
@@ -331,6 +235,81 @@ namespace LowaPass
             this.SideNavRightBorder.Size = new System.Drawing.Size(4, 700);
             this.SideNavRightBorder.TabIndex = 2;
             // 
+            // addCategorieButton
+            // 
+            this.addCategorieButton.Image = global::LowaPasswd.Properties.Resources.add_categorie_hover;
+            this.addCategorieButton.Location = new System.Drawing.Point(642, 3);
+            this.addCategorieButton.Name = "addCategorieButton";
+            this.addCategorieButton.Size = new System.Drawing.Size(44, 44);
+            this.addCategorieButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.addCategorieButton.TabIndex = 1;
+            this.addCategorieButton.TabStop = false;
+            this.addCategorieButton.Click += new System.EventHandler(this.addCategorieButton_Click);
+            this.addCategorieButton.MouseEnter += new System.EventHandler(this.addCategorieButton_MouseEnter);
+            this.addCategorieButton.MouseLeave += new System.EventHandler(this.addCategorieButton_MouseLeave);
+            // 
+            // minimize
+            // 
+            this.minimize.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(33)))), ((int)(((byte)(61)))));
+            this.minimize.Dock = System.Windows.Forms.DockStyle.Right;
+            this.minimize.ErrorImage = global::LowaPasswd.Properties.Resources.line;
+            this.minimize.Image = global::LowaPasswd.Properties.Resources.line;
+            this.minimize.InitialImage = null;
+            this.minimize.Location = new System.Drawing.Point(0, 0);
+            this.minimize.Name = "minimize";
+            this.minimize.Size = new System.Drawing.Size(60, 22);
+            this.minimize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.minimize.TabIndex = 2;
+            this.minimize.TabStop = false;
+            this.minimize.Click += new System.EventHandler(this.minimize_Click);
+            this.minimize.MouseEnter += new System.EventHandler(this.minimize_MouseEnter);
+            this.minimize.MouseLeave += new System.EventHandler(this.minimize_MouseLeave);
+            // 
+            // close
+            // 
+            this.close.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(33)))), ((int)(((byte)(61)))));
+            this.close.Dock = System.Windows.Forms.DockStyle.Right;
+            this.close.ErrorImage = global::LowaPasswd.Properties.Resources.close;
+            this.close.Image = global::LowaPasswd.Properties.Resources.close;
+            this.close.ImageLocation = " ";
+            this.close.InitialImage = null;
+            this.close.Location = new System.Drawing.Point(60, 0);
+            this.close.Name = "close";
+            this.close.Size = new System.Drawing.Size(60, 22);
+            this.close.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.close.TabIndex = 0;
+            this.close.TabStop = false;
+            this.close.Click += new System.EventHandler(this.close_Click);
+            this.close.MouseEnter += new System.EventHandler(this.close_Enter);
+            this.close.MouseLeave += new System.EventHandler(this.close_MouseLeave);
+            // 
+            // information
+            // 
+            this.information.Dock = System.Windows.Forms.DockStyle.Right;
+            this.information.Image = global::LowaPasswd.Properties.Resources.information_hover;
+            this.information.Location = new System.Drawing.Point(171, 0);
+            this.information.Name = "information";
+            this.information.Size = new System.Drawing.Size(59, 50);
+            this.information.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.information.TabIndex = 1;
+            this.information.TabStop = false;
+            this.information.Click += new System.EventHandler(this.information_Click);
+            this.information.MouseEnter += new System.EventHandler(this.information_MouseEnter);
+            this.information.MouseLeave += new System.EventHandler(this.information_MouseLeave);
+            // 
+            // settings
+            // 
+            this.settings.Dock = System.Windows.Forms.DockStyle.Left;
+            this.settings.Image = global::LowaPasswd.Properties.Resources.settings_hover;
+            this.settings.Location = new System.Drawing.Point(0, 0);
+            this.settings.Name = "settings";
+            this.settings.Size = new System.Drawing.Size(59, 50);
+            this.settings.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.settings.TabIndex = 0;
+            this.settings.TabStop = false;
+            this.settings.MouseEnter += new System.EventHandler(this.settings_MouseEnter);
+            this.settings.MouseLeave += new System.EventHandler(this.settings_MouseLeave);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -345,18 +324,17 @@ namespace LowaPass
             this.Text = "Form1";
             this.SideNav.ResumeLayout(false);
             this.SideNavFooter.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.information)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.settings)).EndInit();
-            this.SideNavTopContent.ResumeLayout(false);
             this.Navbar.ResumeLayout(false);
             this.SubOptionBox.ResumeLayout(false);
             this.OptionBox.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.minimize)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.close)).EndInit();
             this.displayContent.ResumeLayout(false);
             this.bottomPanelAddCategorie.ResumeLayout(false);
             this.bottomPanelAddCategorie.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.addCategorieButton)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.minimize)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.close)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.information)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.settings)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -370,7 +348,6 @@ namespace LowaPass
         private System.Windows.Forms.PictureBox minimize;
         private System.Windows.Forms.PictureBox close;
         private System.Windows.Forms.Panel OptionBox;
-        private System.Windows.Forms.Button btLogin;
         private System.Windows.Forms.Panel displayContent;
         private System.Windows.Forms.Panel SideNavRightBorder;
         private System.Windows.Forms.Panel NavBorderBottom;

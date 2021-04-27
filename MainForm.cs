@@ -97,22 +97,22 @@ namespace LowaPass
 
         private void information_MouseEnter(object sender, EventArgs e)
         {
-            information.Image = Image.FromFile("C:/Users/Steven/source/repos/LowaPasswd/icons/information_hover.png");
+            information.Image = new Bitmap(LowaPasswd.Properties.Resources.information);
         }
 
         private void information_MouseLeave(object sender, EventArgs e)
         {
-            information.Image = Image.FromFile("C:/Users/Steven/source/repos/LowaPasswd/icons/information.png");
+            information.Image = new Bitmap(LowaPasswd.Properties.Resources.information_hover);
         }
 
         private void settings_MouseEnter(object sender, EventArgs e)
         {
-            settings.Image = Image.FromFile("C:/Users/Steven/source/repos/LowaPasswd/icons/settings_hover.png");
+            settings.Image = new Bitmap(LowaPasswd.Properties.Resources.settings);
         }
 
         private void settings_MouseLeave(object sender, EventArgs e)
         {
-            settings.Image = Image.FromFile("C:/Users/Steven/source/repos/LowaPasswd/icons/settings.png");
+            settings.Image = new Bitmap(LowaPasswd.Properties.Resources.settings_hover);
         }
 
         private void information_Click(object sender, EventArgs e)
@@ -167,12 +167,12 @@ namespace LowaPass
 
         private void addCategorieButton_MouseEnter(object sender, EventArgs e)
         {
-            addCategorieButton.Image = Image.FromFile("C:/Users/Steven/source/repos/LowaPasswd/icons/add_categorie_hover.png");
+            addCategorieButton.Image = new Bitmap(LowaPasswd.Properties.Resources.add_categorie);
         }
 
         private void addCategorieButton_MouseLeave(object sender, EventArgs e)
         {
-            addCategorieButton.Image = Image.FromFile("C:/Users/Steven/source/repos/LowaPasswd/icons/add_categorie.png");
+            addCategorieButton.Image = new Bitmap(LowaPasswd.Properties.Resources.add_categorie_hover);
         }
 
         private void addCategorieButton_Click(object sender, EventArgs e)
@@ -243,13 +243,9 @@ namespace LowaPass
 
                 Categorie categorie = Categorie.Categories_.Find(categorie_ => categorie_.Name_.Equals(button.Text));
 
-                Console.WriteLine("YES");
                 if (categorie.Credentials_.Count > 0) {
                     categorie.Credentials_.ForEach(credential => buildCredential(showCategorieForm.flow, credential.Label_, credential.Login_, credential.Password_));
-                    Console.WriteLine("IJININI");
-
                 }
-                Console.WriteLine("N?");
 
             };
 
@@ -300,27 +296,29 @@ namespace LowaPass
             Panel cardTitlePanel = new Panel() {
                 Dock = DockStyle.Top,
                 BackColor = Color.FromArgb(252, 163, 17),
-                Name = "cardTitlePanel" + label
+                Name = "cardTitlePanel" + label,
+                Height = 50
             };
 
             //Card-Input-Login
             Panel cardLoginPanel = new Panel() {
                 Dock = DockStyle.Top,
                 BackColor = Color.FromArgb(11, 19, 43),
-                Name = "cardLoginPanel" + label
-
+                Name = "cardLoginPanel" + label,
+                Height = 50
             };
             //Card-Input-Password
             Panel cardPasswordPanel = new Panel() {
                 Dock = DockStyle.Top,
                 BackColor = Color.FromArgb(11, 19, 43),
-                Name = "cardPasswordPanel" + label
+                Name = "cardPasswordPanel" + label,
+                Height = 50
             };
 
             //Add sub panel to main panel
-            cardPanel.Controls.Add(cardTitlePanel);
-            cardPanel.Controls.Add(cardLoginPanel);
-            cardPanel.Controls.Add(cardPasswordPanel);
+            cardPanel.Controls.Add(cardPasswordPanel);//third line
+            cardPanel.Controls.Add(cardLoginPanel); //second line
+            cardPanel.Controls.Add(cardTitlePanel); //First line
 
             //Card title label
             Label cardTitle = new Label() {
@@ -337,19 +335,24 @@ namespace LowaPass
 
             //Card delete icon
             PictureBox pictureBox = new PictureBox() {
-                Name = "cardDeletePicture" + label,
+                Name = "pictureBoxDelete" + label,
                 Dock = DockStyle.Fill,
                 Image = new Bitmap(LowaPasswd.Properties.Resources.delete),
                 SizeMode = PictureBoxSizeMode.CenterImage,
-                BackColor = Color.Transparent        
+                BackColor = Color.FromArgb(11, 19, 43)
             };
 
-            //Add first line
-            cardTitlePanel.Controls.Add(cardTitle);
-            cardTitlePanel.Controls.Add(pictureBox);
+            pictureBox.MouseEnter += (s, evt) => { pictureBox.Image = new Bitmap(LowaPasswd.Properties.Resources.delete_hover); };
+            pictureBox.MouseLeave += (s, evt) => { pictureBox.Image = new Bitmap(LowaPasswd.Properties.Resources.delete); };
 
-            TextBox textBox = new TextBox() {
-                Name = "cardLoginPanel" + label,
+            //Add first sub line 
+            cardTitlePanel.Controls.Add(pictureBox);
+            cardTitlePanel.Controls.Add(cardTitle);
+
+
+            //Card login input
+            TextBox textBoxLogin = new TextBox() {
+                Name = "textBoxLogin" + label,
                 Dock = DockStyle.Left,
                 BackColor = Color.FromArgb(11, 19, 43),
                 Font = new Font("Arial", 14),
@@ -362,24 +365,53 @@ namespace LowaPass
                 BorderStyle = BorderStyle.None
             };
 
-            pictureBox.Name = "cardModifyLoginPicture" + label;
-            pictureBox.Dock = DockStyle.Fill;
-            pictureBox.Image = new Bitmap(LowaPasswd.Properties.Resources.card_modify);
+            //Card delete icon
+            PictureBox pictureBoxLogin = new PictureBox() {
+                Name = "pictureBoxModifyLogin" + label,
+                Dock = DockStyle.Fill,
+                Image = new Bitmap(LowaPasswd.Properties.Resources.card_modify),
+                SizeMode = PictureBoxSizeMode.CenterImage,
+                BackColor = Color.FromArgb(11, 19, 43)
+            };
 
-            //Add second line
-            cardLoginPanel.Controls.Add(textBox);
-            cardLoginPanel.Controls.Add(pictureBox);
+            pictureBoxLogin.MouseEnter += (s, evt) => { pictureBoxLogin.Image = new Bitmap(LowaPasswd.Properties.Resources.card_modify_hover); };
+            pictureBoxLogin.MouseLeave += (s, evt) => { pictureBoxLogin.Image = new Bitmap(LowaPasswd.Properties.Resources.card_modify); };
 
-            textBox.Name = "cardPasswordPanel" + label;
-            textBox.Text = password;
-            textBox.UseSystemPasswordChar = true;
+            //Add second sub line
+            cardLoginPanel.Controls.Add(pictureBoxLogin);
+            cardLoginPanel.Controls.Add(textBoxLogin);
 
-            //Add third line
-            pictureBox.Name = "cardModifyPasswordPicture" + label;
-            pictureBox.Dock = DockStyle.Fill;
+            //Card password input
+            TextBox textBoxPassword = new TextBox() {
+                Name = "textBoxPassword" + label,
+                Dock = DockStyle.Left,
+                BackColor = Color.FromArgb(11, 19, 43),
+                Font = new Font("Arial", 14),
+                ForeColor = Color.FromArgb(252, 163, 17),
+                Text = password,
+                ReadOnly = true,
+                Multiline = true,
+                TextAlign = HorizontalAlignment.Center,
+                Width = 430,
+                BorderStyle = BorderStyle.None,
+                UseSystemPasswordChar = true,
+                PasswordChar = '*'
+            };
 
-            cardPasswordPanel.Controls.Add(textBox);
-            cardPasswordPanel.Controls.Add(pictureBox);
+            //Card modify password icon
+            PictureBox pictureBoxPassword = new PictureBox() {
+                Name = "pictureBoxModifyPassword" + label,
+                Dock = DockStyle.Fill,
+                Image = new Bitmap(LowaPasswd.Properties.Resources.card_modify),
+                SizeMode = PictureBoxSizeMode.CenterImage,
+                BackColor = Color.FromArgb(11, 19, 43)
+            };
+
+            pictureBoxPassword.MouseEnter += (s, evt) => { pictureBoxPassword.Image = new Bitmap(LowaPasswd.Properties.Resources.card_modify_hover); };
+            pictureBoxPassword.MouseLeave += (s, evt) => { pictureBoxPassword.Image = new Bitmap(LowaPasswd.Properties.Resources.card_modify); };
+
+            cardPasswordPanel.Controls.Add(pictureBoxPassword);
+            cardPasswordPanel.Controls.Add(textBoxPassword);
 
             panel.Controls.Add(cardPanel);
 
