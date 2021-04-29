@@ -96,6 +96,7 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="models\Builder.cs" />
     <Compile Include="models\Categorie.cs" />
     <Compile Include="models\Credential.cs" />
     <Compile Include="models\FileManager.cs" />
@@ -171,6 +172,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add_credential_hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add_credential.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
