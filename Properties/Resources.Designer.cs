@@ -83,6 +83,26 @@ namespace LowaPasswd.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap add_credential {
+            get {
+                object obj = ResourceManager.GetObject("add_credential", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap add_credential_hover {
+            get {
+                object obj = ResourceManager.GetObject("add_credential_hover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap card_modify {
             get {
                 object obj = ResourceManager.GetObject("card_modify", resourceCulture);
