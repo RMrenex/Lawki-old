@@ -1,11 +1,6 @@
 ﻿using LowaPass;
 using LowaPasswd.forms;
-using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace LowaPasswd.models {
@@ -81,9 +76,7 @@ namespace LowaPasswd.models {
 
                     }
                 }
-
             }
-
         }
 
         public static void buildCredential(Panel panel, string label, string login, string password) {
@@ -147,6 +140,7 @@ namespace LowaPasswd.models {
 
             pictureBox.MouseEnter += (s, evt) => { pictureBox.Image = new Bitmap(LowaPasswd.Properties.Resources.delete_hover); };
             pictureBox.MouseLeave += (s, evt) => { pictureBox.Image = new Bitmap(LowaPasswd.Properties.Resources.delete); };
+            pictureBox.Click += (s, evt) => { deleteCredential(label, panel, cardPanel); };
 
             //Add first sub line 
             cardTitlePanel.Controls.Add(pictureBox);
@@ -168,7 +162,9 @@ namespace LowaPasswd.models {
                 BorderStyle = BorderStyle.None
             };
 
-            //Card delete icon
+            textBoxLogin.DoubleClick += (s, evt) => { updateLogin(label, textBoxLogin); };
+
+            //Card modify login icon
             PictureBox pictureBoxLogin = new PictureBox() {
                 Name = "pictureBoxModifyLogin" + label,
                 Dock = DockStyle.Fill,
@@ -179,6 +175,7 @@ namespace LowaPasswd.models {
 
             pictureBoxLogin.MouseEnter += (s, evt) => { pictureBoxLogin.Image = new Bitmap(LowaPasswd.Properties.Resources.card_modify_hover); };
             pictureBoxLogin.MouseLeave += (s, evt) => { pictureBoxLogin.Image = new Bitmap(LowaPasswd.Properties.Resources.card_modify); };
+            pictureBoxLogin.Click += (s, evt) => { textBoxLogin.ReadOnly = false; };
 
             //Add second sub line
             cardLoginPanel.Controls.Add(pictureBoxLogin);
@@ -201,6 +198,8 @@ namespace LowaPasswd.models {
                 PasswordChar = '*'
             };
 
+            textBoxPassword.DoubleClick += (s, evt) => { updatePassword(label, textBoxPassword); };
+
             //Card modify password icon
             PictureBox pictureBoxPassword = new PictureBox() {
                 Name = "pictureBoxModifyPassword" + label,
@@ -212,12 +211,48 @@ namespace LowaPasswd.models {
 
             pictureBoxPassword.MouseEnter += (s, evt) => { pictureBoxPassword.Image = new Bitmap(LowaPasswd.Properties.Resources.card_modify_hover); };
             pictureBoxPassword.MouseLeave += (s, evt) => { pictureBoxPassword.Image = new Bitmap(LowaPasswd.Properties.Resources.card_modify); };
+            pictureBoxPassword.Click += (s, evt) => { textBoxPassword.ReadOnly = false; };
 
             cardPasswordPanel.Controls.Add(pictureBoxPassword);
             cardPasswordPanel.Controls.Add(textBoxPassword);
 
             panel.Controls.Add(cardPanel);
 
+        }
+
+        private static void deleteCredential(string name, Panel mainPanel, Panel deletedPanel) {
+
+            Categorie categorie = Categorie.Categories_.Find(categorie_ => categorie_.Name_.Equals(MainForm.instance.ActiveCategorie));
+            categorie.Credentials_.RemoveAll(credential_ => credential_.Label_.Equals(name));
+            mainPanel.Controls.Remove(deletedPanel);
+        }
+
+        private static void updateLogin(string name, TextBox textBox) {
+
+            if (textBox.ReadOnly == true) {
+                return;
+            }
+
+            Categorie categorie = Categorie.Categories_.Find(categorie_ => categorie_.Name_.Equals(MainForm.instance.ActiveCategorie));
+            Credential credential = categorie.Credentials_.Find(credential_ => credential_.Label_.Equals(name));
+            credential.Login_ = textBox.Text;
+
+            textBox.Name = "textBoxLogin" + textBox.Name;
+            textBox.ReadOnly = true;     
+        }
+
+        private static void updatePassword(string name, TextBox textBox) {
+
+            if (textBox.ReadOnly == true) {
+                return;
+            }
+
+            Categorie categorie = Categorie.Categories_.Find(categorie_ => categorie_.Name_.Equals(MainForm.instance.ActiveCategorie));
+            Credential credential = categorie.Credentials_.Find(credential_ => credential_.Label_.Equals(name));
+            credential.Password_ = textBox.Text;
+
+            textBox.Name = "textBoxPassword" + textBox.Name;
+            textBox.ReadOnly = true;
         }
     }
 }
