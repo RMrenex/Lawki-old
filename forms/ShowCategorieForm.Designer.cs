@@ -33,7 +33,8 @@ namespace LowaPasswd.forms
             this.TopPanel = new System.Windows.Forms.Panel();
             this.TopSubPanel = new System.Windows.Forms.Panel();
             this.labelAddName = new System.Windows.Forms.Label();
-            this.inputAddCrtedentialName = new System.Windows.Forms.TextBox();
+            this.inputAddCredentialName = new System.Windows.Forms.TextBox();
+            this.pictureBoxAddCredential = new System.Windows.Forms.PictureBox();
             this.labelAddPassword = new System.Windows.Forms.Label();
             this.labelAddLogin = new System.Windows.Forms.Label();
             this.inputaddCredentialPassword = new System.Windows.Forms.TextBox();
@@ -41,7 +42,6 @@ namespace LowaPasswd.forms
             this.LeftPanel = new System.Windows.Forms.Panel();
             this.flowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.labelWarning = new MetroFramework.Controls.MetroLabel();
-            this.pictureBoxAddCredential = new System.Windows.Forms.PictureBox();
             this.TopPanel.SuspendLayout();
             this.TopSubPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAddCredential)).BeginInit();
@@ -70,7 +70,7 @@ namespace LowaPasswd.forms
             // 
             this.TopSubPanel.BackColor = System.Drawing.Color.Transparent;
             this.TopSubPanel.Controls.Add(this.labelAddName);
-            this.TopSubPanel.Controls.Add(this.inputAddCrtedentialName);
+            this.TopSubPanel.Controls.Add(this.inputAddCredentialName);
             this.TopSubPanel.Controls.Add(this.pictureBoxAddCredential);
             this.TopSubPanel.Controls.Add(this.labelAddPassword);
             this.TopSubPanel.Controls.Add(this.labelAddLogin);
@@ -93,18 +93,32 @@ namespace LowaPasswd.forms
             this.labelAddName.Text = "Nom";
             this.labelAddName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // inputAddCrtedentialName
+            // inputAddCredentialName
             // 
-            this.inputAddCrtedentialName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(19)))), ((int)(((byte)(43)))));
-            this.inputAddCrtedentialName.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.inputAddCrtedentialName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.inputAddCrtedentialName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(163)))), ((int)(((byte)(17)))));
-            this.inputAddCrtedentialName.Location = new System.Drawing.Point(63, 43);
-            this.inputAddCrtedentialName.Multiline = true;
-            this.inputAddCrtedentialName.Name = "inputAddCrtedentialName";
-            this.inputAddCrtedentialName.Size = new System.Drawing.Size(220, 35);
-            this.inputAddCrtedentialName.TabIndex = 5;
-            this.inputAddCrtedentialName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.inputAddCredentialName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(19)))), ((int)(((byte)(43)))));
+            this.inputAddCredentialName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.inputAddCredentialName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.inputAddCredentialName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(163)))), ((int)(((byte)(17)))));
+            this.inputAddCredentialName.Location = new System.Drawing.Point(63, 43);
+            this.inputAddCredentialName.Multiline = true;
+            this.inputAddCredentialName.Name = "inputAddCredentialName";
+            this.inputAddCredentialName.Size = new System.Drawing.Size(220, 35);
+            this.inputAddCredentialName.TabIndex = 5;
+            this.inputAddCredentialName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // pictureBoxAddCredential
+            // 
+            this.pictureBoxAddCredential.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxAddCredential.Image = global::LowaPasswd.Properties.Resources.add_credential;
+            this.pictureBoxAddCredential.Location = new System.Drawing.Point(833, 37);
+            this.pictureBoxAddCredential.Name = "pictureBoxAddCredential";
+            this.pictureBoxAddCredential.Size = new System.Drawing.Size(50, 50);
+            this.pictureBoxAddCredential.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBoxAddCredential.TabIndex = 4;
+            this.pictureBoxAddCredential.TabStop = false;
+            this.pictureBoxAddCredential.Click += new System.EventHandler(this.pictureBoxAddCredential_Click);
+            this.pictureBoxAddCredential.MouseEnter += new System.EventHandler(this.pictureBoxAddCredential_MouseEnter);
+            this.pictureBoxAddCredential.MouseLeave += new System.EventHandler(this.pictureBoxAddCredential_MouseLeave);
             // 
             // labelAddPassword
             // 
@@ -168,6 +182,7 @@ namespace LowaPasswd.forms
             // 
             // flowLayoutPanel
             // 
+            this.flowLayoutPanel.AutoScroll = true;
             this.flowLayoutPanel.BackColor = System.Drawing.Color.Transparent;
             this.flowLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel.Location = new System.Drawing.Point(4, 173);
@@ -189,20 +204,6 @@ namespace LowaPasswd.forms
             this.labelWarning.UseCustomBackColor = true;
             this.labelWarning.UseCustomForeColor = true;
             this.labelWarning.Visible = false;
-            // 
-            // pictureBoxAddCredential
-            // 
-            this.pictureBoxAddCredential.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxAddCredential.Image = global::LowaPasswd.Properties.Resources.add_credential;
-            this.pictureBoxAddCredential.Location = new System.Drawing.Point(833, 37);
-            this.pictureBoxAddCredential.Name = "pictureBoxAddCredential";
-            this.pictureBoxAddCredential.Size = new System.Drawing.Size(50, 50);
-            this.pictureBoxAddCredential.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBoxAddCredential.TabIndex = 4;
-            this.pictureBoxAddCredential.TabStop = false;
-            this.pictureBoxAddCredential.Click += new System.EventHandler(this.pictureBoxAddCredential_Click);
-            this.pictureBoxAddCredential.MouseEnter += new System.EventHandler(this.pictureBoxAddCredential_MouseEnter);
-            this.pictureBoxAddCredential.MouseLeave += new System.EventHandler(this.pictureBoxAddCredential_MouseLeave);
             // 
             // ShowCategorieForm
             // 
@@ -238,7 +239,7 @@ namespace LowaPasswd.forms
         private System.Windows.Forms.Label labelAddLogin;
         private System.Windows.Forms.PictureBox pictureBoxAddCredential;
         private System.Windows.Forms.Label labelAddName;
-        private System.Windows.Forms.TextBox inputAddCrtedentialName;
+        private System.Windows.Forms.TextBox inputAddCredentialName;
         private MetroFramework.Controls.MetroLabel labelWarning;
     }
 }
