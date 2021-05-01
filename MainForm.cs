@@ -40,7 +40,6 @@ namespace LowaPass {
             instance = this;
             pannelCategorieDisplayer = categorieDisplayer;
             showContent = displayContent;
-            this.categorieDisplayer.Paint += new PaintEventHandler(this.categorieDisplayer_Paint);
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 5, 5));
             metroScrollBar.Scroll += (sender, e) => { categorieDisplayer.VerticalScroll.Value = metroScrollBar.Value; };
         }
@@ -83,12 +82,7 @@ namespace LowaPass {
                 SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
             }
         }
-        private void categorieDisplayer_Paint(object sender, PaintEventArgs e)
-        {
 
-            ControlPaint.DrawBorder(e.Graphics, this.categorieDisplayer.ClientRectangle, Color.Transparent, 0, ButtonBorderStyle.None,
-               Color.FromArgb(252, 163, 17), 1, ButtonBorderStyle.Solid, Color.Transparent, 0, ButtonBorderStyle.None, Color.Transparent, 0, ButtonBorderStyle.None);
-        }
 
         private void information_MouseEnter(object sender, EventArgs e)
         {
@@ -184,6 +178,14 @@ namespace LowaPass {
             Categorie.Categories_.Add(new Categorie(inputAddCategorieButton.Text, new List<Credential>()));
             Builder.buildCategorie(inputAddCategorieButton.Text);
             inputAddCategorieButton.ResetText();
+
+        }
+
+        private void AddCategorieButton_KeyPress(object sender, KeyPressEventArgs e) {
+
+            if (e.KeyChar == (char)13) {
+                addCategorieButton_Click(sender, e);
+            }
 
         }
 
