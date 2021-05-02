@@ -78,6 +78,12 @@
     <Compile Include="forms\LoginForm.designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="forms\Notification.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\Notification.Designer.cs">
+      <DependentUpon>Notification.cs</DependentUpon>
+    </Compile>
     <Compile Include="forms\SettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,6 +116,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="forms\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\Notification.resx">
+      <DependentUpon>Notification.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\SettingsForm.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>

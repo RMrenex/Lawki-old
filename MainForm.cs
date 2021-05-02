@@ -153,25 +153,23 @@ namespace LowaPass {
         {
 
             if (inputAddCategorieButton.Lines.Length > 1) {
-                labelWarning.Text = "Erreur : vous ne pouvez pas écrire sur plusieurs lignes";
-                labelWarning.Visible = true;
-                hideWarning(3000);
+                Notification notification = new Notification("Erreur : vous ne pouvez pas écrire sur plusieurs lignes");
+                notification.Show();
+                System.Media.SystemSounds.Exclamation.Play();
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(inputAddCategorieButton.Text)) {
-                labelWarning.Text = "Erreur : La catégorie ne peux pas être vide";
-                labelWarning.Visible = true;
-                hideWarning(3000);
+            else if (string.IsNullOrWhiteSpace(inputAddCategorieButton.Text)) {
+                Notification notification = new Notification("Erreur: La catégorie ne peux pas être vide");
+                notification.Show();
+                System.Media.SystemSounds.Exclamation.Play();
                 return;
             }
 
-            if (Categorie.Categories_.Find(categorie => categorie.Name_.ToUpper().Equals(inputAddCategorieButton.Text.ToUpper())) != null)
-            {
-
-                labelWarning.Text = "Erreur : Ce nom de catégorie est déjà utilisé";
-                labelWarning.Visible = true;
-                hideWarning(5000);
+            else if (Categorie.Categories_.Find(categorie => categorie.Name_.ToUpper().Equals(inputAddCategorieButton.Text.ToUpper())) != null){
+                Notification notification = new Notification("Erreur : Ce nom de catégorie est déjà utilisé");
+                notification.Show();
+                System.Media.SystemSounds.Exclamation.Play();
                 return;
             }
 
