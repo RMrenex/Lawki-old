@@ -163,6 +163,7 @@ namespace LowaPasswd.models {
             };
 
             textBoxLogin.DoubleClick += (s, evt) => { updateLogin(label, textBoxLogin); };
+            showTooltip(textBoxLogin);
 
             //Card modify login icon
             PictureBox pictureBoxLogin = new PictureBox() {
@@ -233,6 +234,10 @@ namespace LowaPasswd.models {
                 return;
             }
 
+            if (string.IsNullOrWhiteSpace(textBox.Text)) {
+                return;
+            }
+
             Categorie categorie = Categorie.Categories_.Find(categorie_ => categorie_.Name_.Equals(MainForm.instance.ActiveCategorie));
             Credential credential = categorie.Credentials_.Find(credential_ => credential_.Label_.Equals(name));
             credential.Login_ = textBox.Text;
@@ -247,12 +252,29 @@ namespace LowaPasswd.models {
                 return;
             }
 
+            if (string.IsNullOrWhiteSpace(textBox.Text)) {
+                return;
+            }
+
             Categorie categorie = Categorie.Categories_.Find(categorie_ => categorie_.Name_.Equals(MainForm.instance.ActiveCategorie));
             Credential credential = categorie.Credentials_.Find(credential_ => credential_.Label_.Equals(name));
             credential.Password_ = textBox.Text;
 
             textBox.Name = "textBoxPassword" + textBox.Name;
             textBox.ReadOnly = true;
+        }
+
+        private static void showTooltip(TextBox textBox) {
+
+            MetroFramework.Components.MetroToolTip toolTip = new MetroFramework.Components.MetroToolTip() {
+                AutoPopDelay = 5000,
+                InitialDelay = 0,
+                ReshowDelay = 0,
+                ShowAlways = true
+            };
+
+            toolTip.SetToolTip(textBox, "je sais pas");
+
         }
     }
 }
