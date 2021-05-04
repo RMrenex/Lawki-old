@@ -11,14 +11,12 @@ using System.Windows.Forms;
 namespace LowaPasswd.forms {
     public partial class Notification : Form {
 
-        private string message_;
         public Notification() {
             InitializeComponent();
         }
 
         public Notification(string message) {
             InitializeComponent();
-            this.message_ = message;
             labelNotificationtext.Text = message;
         }
 
