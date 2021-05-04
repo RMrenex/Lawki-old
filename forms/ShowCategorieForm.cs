@@ -19,16 +19,14 @@ namespace LowaPasswd.forms {
         private void pictureBoxAddCredential_Click(object sender, EventArgs e) {
 
             if (inputAddCredentialName.Lines.Length > 1 || inputaddCredentialLogin.Lines.Length > 1 || inputaddCredentialPassword.Lines.Length > 1 ) {
-                labelWarning.Text = "Erreur : vous ne pouvez pas écrire sur plusieurs lignes";
-                labelWarning.Visible = true;
-                hideWarning(3000);
+                Notification notification = new Notification("Erreur : vous ne pouvez pas écrire sur plusieurs lignes");
+                notification.Show();
                 return;
             }
 
             if (string.IsNullOrWhiteSpace(inputAddCredentialName.Text) || string.IsNullOrWhiteSpace(inputaddCredentialLogin.Text) || string.IsNullOrWhiteSpace(inputaddCredentialPassword.Text)) {
-                labelWarning.Text = "Erreur : Un ou plusieurs champs sont vides";
-                labelWarning.Visible = true;
-                hideWarning(3000);
+                Notification notification = new Notification("Erreur : Un ou plusieurs champs sont vides");
+                notification.Show();
                 return;
             }
 
@@ -40,9 +38,8 @@ namespace LowaPasswd.forms {
                 categorie.Credentials_.Add(new Credential(inputAddCredentialName.Text, inputaddCredentialLogin.Text, inputaddCredentialPassword.Text));
             }
             else {
-                labelWarning.Text = "Erreur : Ce nom est déjà utilisé";
-                labelWarning.Visible = true;
-                hideWarning(3000);
+                Notification notification = new Notification("Erreur : Ce nom est déjà utilisé");
+                notification.Show();
             }
 
             inputAddCredentialName.Clear();
@@ -50,7 +47,7 @@ namespace LowaPasswd.forms {
             inputaddCredentialPassword.Clear();
         }
 
-        private Boolean passwordSecurityThreshold(string password) {
+        private bool passwordSecurityThreshold(string password) {
 
             var expectedPasswordPattern = new Regex(@"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,15}$");
             var isValidPassword = expectedPasswordPattern.IsMatch(password);
@@ -60,19 +57,6 @@ namespace LowaPasswd.forms {
             }
 
             return true;
-        }
-
-        public void hideWarning(int longTime) {
-
-            var timer = new Timer();
-            timer.Interval = longTime;
-
-            timer.Tick += (s, e) => {
-                labelWarning.Hide();
-                timer.Stop();
-            };
-
-            timer.Start();
         }
 
         private void pictureBoxAddCredential_MouseEnter(object sender, EventArgs e) {

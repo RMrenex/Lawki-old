@@ -41,7 +41,6 @@ namespace LowaPasswd.forms
             this.inputaddCredentialLogin = new System.Windows.Forms.TextBox();
             this.LeftPanel = new System.Windows.Forms.Panel();
             this.flowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.labelWarning = new MetroFramework.Controls.MetroLabel();
             this.TopPanel.SuspendLayout();
             this.TopSubPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAddCredential)).BeginInit();
@@ -190,27 +189,11 @@ namespace LowaPasswd.forms
             this.flowLayoutPanel.Size = new System.Drawing.Size(966, 437);
             this.flowLayoutPanel.TabIndex = 3;
             // 
-            // labelWarning
-            // 
-            this.labelWarning.BackColor = System.Drawing.Color.Transparent;
-            this.labelWarning.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.labelWarning.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.labelWarning.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(163)))), ((int)(((byte)(17)))));
-            this.labelWarning.Location = new System.Drawing.Point(4, 580);
-            this.labelWarning.Name = "labelWarning";
-            this.labelWarning.Size = new System.Drawing.Size(966, 30);
-            this.labelWarning.TabIndex = 4;
-            this.labelWarning.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.labelWarning.UseCustomBackColor = true;
-            this.labelWarning.UseCustomForeColor = true;
-            this.labelWarning.Visible = false;
-            // 
             // ShowCategorieForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(970, 670);
-            this.Controls.Add(this.labelWarning);
             this.Controls.Add(this.flowLayoutPanel);
             this.Controls.Add(this.LeftPanel);
             this.Controls.Add(this.TopPanel);
@@ -240,6 +223,5 @@ namespace LowaPasswd.forms
         private System.Windows.Forms.PictureBox pictureBoxAddCredential;
         private System.Windows.Forms.Label labelAddName;
         private System.Windows.Forms.TextBox inputAddCredentialName;
-        private MetroFramework.Controls.MetroLabel labelWarning;
     }
 }
