@@ -1,4 +1,5 @@
-﻿using LowaPasswd.forms;
+﻿using LowaPass.Forms;
+using LowaPasswd.forms;
 using LowaPasswd.models;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,7 @@ namespace LowaPass {
     {
         public static MainForm instance;
         private InformationForm informationForm;
+        private SettingsForm settingsForm;
         public Form currentForm = null;
         public Panel pannelCategorieDisplayer;
         public Panel showContent;
@@ -118,25 +120,25 @@ namespace LowaPass {
             currentForm = informationForm;
         }
 
+        private void settings_Click(object sender, EventArgs e) {
+
+            updateForm();
+
+            settingsForm = new SettingsForm();
+            settingsForm.TopLevel = false;
+            settingsForm.Dock = DockStyle.Fill;
+            settingsForm.BackColor = displayContent.BackColor;
+
+            this.displayContent.Controls.Add(settingsForm);
+            settingsForm.Show();
+            currentForm = settingsForm;
+        }
+
         public void updateForm() {
 
             if (currentForm != null) {
                 this.displayContent.Controls.Remove(currentForm);
             }
-        }
-
-        public void hideWarning(int longTime){
-
-            var timer = new Timer();
-            timer.Interval = longTime;
-
-            timer.Tick += (s, e) =>
-            {
-                labelWarning.Hide();
-                timer.Stop();
-            };
-
-            timer.Start();
         }
 
         private void addCategorieButton_MouseEnter(object sender, EventArgs e)

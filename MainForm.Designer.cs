@@ -42,7 +42,6 @@ namespace LowaPass
             this.minimize = new System.Windows.Forms.PictureBox();
             this.close = new System.Windows.Forms.PictureBox();
             this.displayContent = new System.Windows.Forms.Panel();
-            this.labelWarning = new MetroFramework.Controls.MetroLabel();
             this.bottomPanelAddCategorie = new System.Windows.Forms.Panel();
             this.labelAddCategorie = new System.Windows.Forms.Label();
             this.addCategorieButton = new System.Windows.Forms.PictureBox();
@@ -135,6 +134,7 @@ namespace LowaPass
             this.settings.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.settings.TabIndex = 0;
             this.settings.TabStop = false;
+            this.settings.Click += new System.EventHandler(this.settings_Click);
             this.settings.MouseEnter += new System.EventHandler(this.settings_MouseEnter);
             this.settings.MouseLeave += new System.EventHandler(this.settings_MouseLeave);
             // 
@@ -216,7 +216,6 @@ namespace LowaPass
             // displayContent
             // 
             this.displayContent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(33)))), ((int)(((byte)(61)))));
-            this.displayContent.Controls.Add(this.labelWarning);
             this.displayContent.Controls.Add(this.bottomPanelAddCategorie);
             this.displayContent.Controls.Add(this.NavBorderBottom);
             this.displayContent.Controls.Add(this.SideNavRightBorder);
@@ -226,22 +225,6 @@ namespace LowaPass
             this.displayContent.Name = "displayContent";
             this.displayContent.Size = new System.Drawing.Size(970, 700);
             this.displayContent.TabIndex = 2;
-            // 
-            // labelWarning
-            // 
-            this.labelWarning.BackColor = System.Drawing.Color.Transparent;
-            this.labelWarning.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.labelWarning.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.labelWarning.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(163)))), ((int)(((byte)(17)))));
-            this.labelWarning.Location = new System.Drawing.Point(4, 620);
-            this.labelWarning.Name = "labelWarning";
-            this.labelWarning.Size = new System.Drawing.Size(966, 30);
-            this.labelWarning.TabIndex = 5;
-            this.labelWarning.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.labelWarning.UseCustomBackColor = true;
-            this.labelWarning.UseCustomForeColor = true;
-            this.labelWarning.Visible = false;
-            this.labelWarning.WrapToLine = true;
             // 
             // bottomPanelAddCategorie
             // 
@@ -360,7 +343,6 @@ namespace LowaPass
         private System.Windows.Forms.Panel bottomPanelAddCategorie;
         private System.Windows.Forms.TextBox inputAddCategorieButton;
         private System.Windows.Forms.PictureBox addCategorieButton;
-        private MetroFramework.Controls.MetroLabel labelWarning;
         private System.Windows.Forms.Label labelAddCategorie;
     }
 }
