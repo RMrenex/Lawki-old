@@ -1,12 +1,9 @@
 ﻿using LowaPass;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Configuration;
 using System.Windows.Forms;
 
-namespace LowaPasswd
-{
+namespace LowaPasswd {
     static class Program
     {
         /// <summary>
@@ -15,6 +12,11 @@ namespace LowaPasswd
         [STAThread]
         static void Main()
         {
+            string firstStart = ConfigurationManager.AppSettings.Get("first");
+            string directory = ConfigurationManager.AppSettings.Get("directory");
+            string lang = ConfigurationManager.AppSettings.Get("lang");
+            string theme = ConfigurationManager.AppSettings.Get("theme");
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());
