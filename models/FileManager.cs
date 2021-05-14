@@ -17,8 +17,8 @@ namespace LowaPasswd.models
         private static string langDirectoryPath = applicationDirectoryPath + "\\lang";
         private static string themeDirectoryPath = applicationDirectoryPath + "\\theme";
         private static string credentialsFilePath = applicationDirectoryPath + "\\credentials.json";
-        private static string langFrFilePath = langDirectoryPath + "\\Fr.xml";
-        private static string langEnFilePath = langDirectoryPath + "\\En.xml";
+        //private static string langFrFilePath = langDirectoryPath + "\\Fr.xml";
+        //private static string langEnFilePath = langDirectoryPath + "\\En.xml";
 
         public static void createApplicationDirectory()
         {
@@ -50,61 +50,18 @@ namespace LowaPasswd.models
             {
 
                 if (Directory.Exists(langDirectoryPath)) {
-                    System.Diagnostics.Debug.WriteLine("Already Exist");
-                    return;
+                    System.Diagnostics.Debug.WriteLine("Already Exist LANG D");
+                }
+                else {
+                    DirectoryInfo directoryInfo = Directory.CreateDirectory(langDirectoryPath);
                 }
 
-                DirectoryInfo directoryInfo = Directory.CreateDirectory(langDirectoryPath);
+                if (!File.Exists(credentialsFilePath)) {
 
-                using (FileStream fs = File.Create(credentialsFilePath))
-                {
-
-                    byte[] info = new UTF8Encoding(true).GetBytes("This is some text in the file.");
-                    fs.Write(info, 0, info.Length);
+                    using (StreamWriter sw = File.CreateText(credentialsFilePath)) {
+                        sw.WriteLine("");
+                    }
                 }
-
-                using (FileStream fs = File.Create(langFrFilePath))
-                {
-                    byte[] header = new UTF8Encoding(true).GetBytes("\"<?xml version=\"1.0\" encoding=\"utf - 8\"?>\"");
-                    fs.Write(header, 0, header.Length);
-
-                    byte[] field_start = new UTF8Encoding(true).GetBytes("<field>");
-                    fs.Write(field_start, 0, field_start.Length);
-
-                    byte[] empty = new UTF8Encoding(true).GetBytes("<add key=\"empty_field\" value=" + Language.EMPTY_FIELD_FR +"/>");
-                    fs.Write(empty, 0, empty.Length);
-
-                    byte[] multi = new UTF8Encoding(true).GetBytes("<add key=\"multi_lines\" value=" + Language.MULTI_LINES_FR + "/>");
-                    fs.Write(multi, 0, multi.Length);
-
-                    byte[] nameAlreadyUse = new UTF8Encoding(true).GetBytes("<add key=\"name_already_use\" value=" + Language.NAME_ALREADY_USE_FR + "/>");
-                    fs.Write(nameAlreadyUse, 0, nameAlreadyUse.Length);
-
-                    byte[] field_end = new UTF8Encoding(true).GetBytes("</field>");
-                    fs.Write(field_end, 0, field_end.Length);
-                }
-
-                using (FileStream fs = File.Create(langEnFilePath)) {
-                    byte[] header = new UTF8Encoding(true).GetBytes("\"<?xml version=\"1.0\" encoding=\"utf - 8\"?>\"");
-                    fs.Write(header, 0, header.Length);
-
-                    byte[] field_start = new UTF8Encoding(true).GetBytes("<field>");
-                    fs.Write(field_start, 0, field_start.Length);
-
-                    byte[] empty = new UTF8Encoding(true).GetBytes("<add key=\"empty_field\" value=" + Language.EMPTY_FIELD_EN + "/>");
-                    fs.Write(empty, 0, empty.Length);
-
-                    byte[] multi = new UTF8Encoding(true).GetBytes("<add key=\"multi_lines\" value=" + Language.MULTI_LINES_EN + "/>");
-                    fs.Write(multi, 0, multi.Length);
-
-                    byte[] nameAlreadyUse = new UTF8Encoding(true).GetBytes("<add key=\"name_already_use\" value=" + Language.NAME_ALREADY_USE_EN + "/>");
-                    fs.Write(nameAlreadyUse, 0, nameAlreadyUse.Length);
-
-                    byte[] field_end = new UTF8Encoding(true).GetBytes("</field>");
-                    fs.Write(field_end, 0, field_end.Length);
-                }
-
-
             }
 
             catch (Exception e)
