@@ -14,18 +14,21 @@ namespace LowaPasswd.forms {
         {
             InitializeComponent();
             flow = flowLayoutPanel;
+            labelAddName.Text = Program.Fields["showCategorieForm_name_add_credential"];
+            labelAddLogin.Text = Program.Fields["showCategorieForm_login_add_credential"];
+            labelAddPassword.Text = Program.Fields["showCategorieForm_password_add_credential"];
         }
 
         private void pictureBoxAddCredential_Click(object sender, EventArgs e) {
 
             if (inputAddCredentialName.Lines.Length > 1 || inputaddCredentialLogin.Lines.Length > 1 || inputaddCredentialPassword.Lines.Length > 1 ) {
-                Notification notification = new Notification("Erreur : vous ne pouvez pas écrire sur plusieurs lignes");
+                Notification notification = new Notification(Program.Fields["error_multi_lines"]);
                 notification.Show();
                 return;
             }
 
             if (string.IsNullOrWhiteSpace(inputAddCredentialName.Text) || string.IsNullOrWhiteSpace(inputaddCredentialLogin.Text) || string.IsNullOrWhiteSpace(inputaddCredentialPassword.Text)) {
-                Notification notification = new Notification("Erreur : Un ou plusieurs champs sont vides");
+                Notification notification = new Notification(Program.Fields["error_empty_field"]);
                 notification.Show();
                 return;
             }
@@ -38,7 +41,7 @@ namespace LowaPasswd.forms {
                 categorie.Credentials_.Add(new Credential(inputAddCredentialName.Text, inputaddCredentialLogin.Text, inputaddCredentialPassword.Text));
             }
             else {
-                Notification notification = new Notification("Erreur : Ce nom est déjà utilisé");
+                Notification notification = new Notification(Program.Fields["error_name_already_use"]);
                 notification.Show();
             }
 
