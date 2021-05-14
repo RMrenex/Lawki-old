@@ -105,7 +105,6 @@
     <Compile Include="models\Categorie.cs" />
     <Compile Include="models\Credential.cs" />
     <Compile Include="models\FileManager.cs" />
-    <Compile Include="models\Language.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="forms\InformationForm.resx">
@@ -185,6 +184,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\add_credential.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="lang\En.xml" />
+    <Content Include="lang\Fr.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
