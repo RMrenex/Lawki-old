@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<fields>
+  <!-- Main form -->
+  <add key="mainForm_add_category" value="AJOUTER UNE CATÉGORIE"/>
+  <!-- Show category form -->
+  <add key="showCategorieForm_name_add_credential" value="NOM"/>
+  <add key="showCategorieForm_login_add_credential" value="IDENTIFIANT"/>
+  <add key="showCategorieForm_password_add_credential" value="MOT DE PASSE"/>
+  <add key="showCategorieForm_tooltips_credential" value="Double clic gauche pour valider les modifications"/>
+  <!-- Settings form -->
+  <add key="settingsForm_change_directory_install" value="Changer le répertoire d'installation :"/>
+  <add key="settingsForm_change_lang" value="Changer la langue :"/>
+  <add key="settingsForm_change_theme" value="Changer le thème :"/>
+  <add key="settingsForm_save_change" value="Sauvegarder :"/>
+  <!-- Information form -->
+  <add key="informationForm_author" value="Auteur : RMrenex"/>
+  <add key="informationForm_version" value="Version : 1.0.0"/>
+  <add key="informationForm_language" value="C# : .NET Framework 4.8"/>
+  <add key="informationForm_os" value="Système d'exploitation : Windows 10"/>
+  <add key="informationForm_copiryght" value="© 2021 Lowarya"/>
+  <!-- Errors -->
+  <add key="error_empty_field" value="Erreur : Un ou plusieurs champs sont vides"/>
+  <add key="error_multi_lines" value="Erreur : vous ne pouvez pas écrire sur plusieurs lignes"/>
+  <add key="error_name_already_use" value="Erreur : Ce nom est déjà utilisé"/>
+</fields>
