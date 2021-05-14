@@ -34,7 +34,7 @@ namespace LowaPass.Forms
             this.labelTheme = new System.Windows.Forms.Label();
             this.comboBoxLang = new MetroFramework.Controls.MetroComboBox();
             this.inputFileSetup = new System.Windows.Forms.TextBox();
-            this.metroComboBoxTheme = new MetroFramework.Controls.MetroComboBox();
+            this.comboBoxTheme = new MetroFramework.Controls.MetroComboBox();
             this.buttonSearchFile = new System.Windows.Forms.Button();
             this.buttonSaveChanged = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -83,8 +83,8 @@ namespace LowaPass.Forms
             this.comboBoxLang.FormattingEnabled = true;
             this.comboBoxLang.ItemHeight = 23;
             this.comboBoxLang.Items.AddRange(new object[] {
-            "Francais",
-            "Anglais"});
+            "Francais/French",
+            "Anglais/English"});
             this.comboBoxLang.Location = new System.Drawing.Point(524, 290);
             this.comboBoxLang.Name = "comboBoxLang";
             this.comboBoxLang.PromptText = "Sélection langue";
@@ -109,26 +109,26 @@ namespace LowaPass.Forms
             this.inputFileSetup.TabIndex = 2;
             this.inputFileSetup.WordWrap = false;
             // 
-            // metroComboBoxTheme
+            // comboBoxTheme
             // 
-            this.metroComboBoxTheme.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(19)))), ((int)(((byte)(43)))));
-            this.metroComboBoxTheme.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.metroComboBoxTheme.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(163)))), ((int)(((byte)(17)))));
-            this.metroComboBoxTheme.FormattingEnabled = true;
-            this.metroComboBoxTheme.ItemHeight = 23;
-            this.metroComboBoxTheme.Items.AddRange(new object[] {
-            "Défaut",
-            "Blanc",
-            "Dark"});
-            this.metroComboBoxTheme.Location = new System.Drawing.Point(524, 325);
-            this.metroComboBoxTheme.Name = "metroComboBoxTheme";
-            this.metroComboBoxTheme.PromptText = "Sélection thème";
-            this.metroComboBoxTheme.Size = new System.Drawing.Size(140, 29);
-            this.metroComboBoxTheme.TabIndex = 1;
-            this.metroComboBoxTheme.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.metroComboBoxTheme.UseCustomBackColor = true;
-            this.metroComboBoxTheme.UseCustomForeColor = true;
-            this.metroComboBoxTheme.UseSelectable = true;
+            this.comboBoxTheme.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(19)))), ((int)(((byte)(43)))));
+            this.comboBoxTheme.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxTheme.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(163)))), ((int)(((byte)(17)))));
+            this.comboBoxTheme.FormattingEnabled = true;
+            this.comboBoxTheme.ItemHeight = 23;
+            this.comboBoxTheme.Items.AddRange(new object[] {
+            "Défaut/Default",
+            "Blanc/White",
+            "Noir/Black"});
+            this.comboBoxTheme.Location = new System.Drawing.Point(524, 325);
+            this.comboBoxTheme.Name = "comboBoxTheme";
+            this.comboBoxTheme.PromptText = "Sélection thème";
+            this.comboBoxTheme.Size = new System.Drawing.Size(140, 29);
+            this.comboBoxTheme.TabIndex = 1;
+            this.comboBoxTheme.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.comboBoxTheme.UseCustomBackColor = true;
+            this.comboBoxTheme.UseCustomForeColor = true;
+            this.comboBoxTheme.UseSelectable = true;
             // 
             // buttonSearchFile
             // 
@@ -164,7 +164,7 @@ namespace LowaPass.Forms
             this.Controls.Add(this.buttonSaveChanged);
             this.Controls.Add(this.buttonSearchFile);
             this.Controls.Add(this.inputFileSetup);
-            this.Controls.Add(this.metroComboBoxTheme);
+            this.Controls.Add(this.comboBoxTheme);
             this.Controls.Add(this.comboBoxLang);
             this.Controls.Add(this.labelTheme);
             this.Controls.Add(this.labelLang);
@@ -184,7 +184,7 @@ namespace LowaPass.Forms
         private System.Windows.Forms.Label labelTheme;
         private MetroFramework.Controls.MetroComboBox comboBoxLang;
         private System.Windows.Forms.TextBox inputFileSetup;
-        private MetroFramework.Controls.MetroComboBox metroComboBoxTheme;
+        private MetroFramework.Controls.MetroComboBox comboBoxTheme;
         private System.Windows.Forms.Button buttonSearchFile;
         private System.Windows.Forms.Button buttonSaveChanged;
     }
