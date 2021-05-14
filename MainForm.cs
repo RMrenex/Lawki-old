@@ -1,4 +1,5 @@
 ﻿using LowaPass.Forms;
+using LowaPasswd;
 using LowaPasswd.forms;
 using LowaPasswd.models;
 using System;
@@ -40,6 +41,7 @@ namespace LowaPass {
         {
             InitializeComponent();
             instance = this;
+            labelAddCategorie.Text = Program.Fields["mainForm_add_category"];
             pannelCategorieDisplayer = categorieDisplayer;
             showContent = displayContent;
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 5, 5));
@@ -124,7 +126,7 @@ namespace LowaPass {
 
             updateForm();
 
-            settingsForm = new SettingsForm();
+            settingsForm = new SettingsForm(labelAddCategorie);
             settingsForm.TopLevel = false;
             settingsForm.Dock = DockStyle.Fill;
             settingsForm.BackColor = displayContent.BackColor;
