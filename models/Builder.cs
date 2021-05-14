@@ -163,7 +163,7 @@ namespace LowaPasswd.models {
             };
 
             textBoxLogin.DoubleClick += (s, evt) => { updateLogin(label, textBoxLogin); };
-            showTooltip(textBoxLogin, "Double click gauche pour valider les modifications");
+            showTooltip(textBoxLogin);
 
             //Card modify login icon
             PictureBox pictureBoxLogin = new PictureBox() {
@@ -200,7 +200,7 @@ namespace LowaPasswd.models {
             };
 
             textBoxPassword.DoubleClick += (s, evt) => { updatePassword(label, textBoxPassword); };
-            showTooltip(textBoxPassword, "Double click gauche pour valider les modifications");
+            showTooltip(textBoxPassword);
 
             //Card modify password icon
             PictureBox pictureBoxPassword = new PictureBox() {
@@ -265,7 +265,7 @@ namespace LowaPasswd.models {
             textBox.ReadOnly = true;
         }
 
-        private static void showTooltip(TextBox textBox, string message) {
+        private static void showTooltip(TextBox textBox) {
 
             MetroFramework.Components.MetroToolTip toolTip = new MetroFramework.Components.MetroToolTip() {
                 AutoPopDelay = 5000,
@@ -274,7 +274,7 @@ namespace LowaPasswd.models {
                 ShowAlways = true
             };
 
-            toolTip.SetToolTip(textBox, message);
+            toolTip.SetToolTip(textBox, Program.Fields["showCategorieForm_tooltips_credential"]);
         }
     }
 }
