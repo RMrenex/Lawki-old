@@ -50,6 +50,7 @@ namespace LowaPass {
 
         private void close_Click(object sender, EventArgs e)
         {
+            FileManager.writeInFile();
             this.Close();
         }
 
