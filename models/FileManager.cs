@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,6 +18,7 @@ namespace LowaPasswd.models
         private static string langDirectoryPath = applicationDirectoryPath + "\\lang";
         private static string themeDirectoryPath = applicationDirectoryPath + "\\theme";
         private static string credentialsFilePath = applicationDirectoryPath + "\\credentials.json";
+        private static string credentialsEncryptFilePath = applicationDirectoryPath + "\\credentialsAES.json";
         //private static string langFrFilePath = langDirectoryPath + "\\Fr.xml";
         //private static string langEnFilePath = langDirectoryPath + "\\En.xml";
 
@@ -56,11 +58,14 @@ namespace LowaPasswd.models
                     DirectoryInfo directoryInfo = Directory.CreateDirectory(langDirectoryPath);
                 }
 
-                if (!File.Exists(credentialsFilePath)) {
+                if (!File.Exists(credentialsFilePath) && !File.Exists(credentialsEncryptFilePath)) {
 
                     using (StreamWriter sw = File.CreateText(credentialsFilePath)) {
                         sw.WriteLine("");
                     }
+                }
+                else {
+                    loadDatabaseFile();
                 }
             }
 
@@ -78,17 +83,21 @@ namespace LowaPasswd.models
                 //serialize object directly into file stream
                 serializer.Serialize(file, Categorie.Categories_);
             }
+
+            Crypto.AES_Encrypt(credentialsFilePath, credentialsEncryptFilePath);
         }
 
-        public static List<Categorie> loadDatabaseFile() {
+        private static List<Categorie> loadDatabaseFile() {
 
             var categories = new List<Categorie>();
 
-            using (StreamReader reader = new StreamReader(credentialsFilePath)) {
+            Crypto.AES_Decrypt(credentialsEncryptFilePath, credentialsFilePath);
 
-                string json = reader.ReadToEnd();
-                categories = JsonConvert.DeserializeObject<List<Categorie>>(json);
-            }
+            //using (StreamReader reader = new StreamReader(credentialsFilePath)) {
+
+            //    string json = reader.ReadToEnd();
+            //    categories = JsonConvert.DeserializeObject<List<Categorie>>(json);
+            //}
             return categories;
         }
 

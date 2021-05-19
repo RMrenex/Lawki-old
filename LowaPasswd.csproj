@@ -54,6 +54,7 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -104,6 +105,7 @@
     <Compile Include="models\Builder.cs" />
     <Compile Include="models\Categorie.cs" />
     <Compile Include="models\Credential.cs" />
+    <Compile Include="models\Crypto.cs" />
     <Compile Include="models\FileManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
