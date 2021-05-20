@@ -17,6 +17,11 @@ namespace LowaPasswd.forms {
             labelAddName.Text = Program.Fields["showCategorieForm_name_add_credential"];
             labelAddLogin.Text = Program.Fields["showCategorieForm_login_add_credential"];
             labelAddPassword.Text = Program.Fields["showCategorieForm_password_add_credential"];
+
+            if (Category.Categories_.Count != 0)
+            {
+                //Category.Categories_.ForEach(category => category.Credentials.ForEach(credential => Builder.BuildCredential(flow, credential.Label_, credential.Login_, credential.Password_)));
+            }
         }
 
         private void pictureBoxAddCredential_Click(object sender, EventArgs e) {
@@ -33,12 +38,12 @@ namespace LowaPasswd.forms {
                 return;
             }
 
-            Categorie categorie = Categorie.Categories_.Find(categorie_ => categorie_.Name_.Equals(MainForm.instance.ActiveCategorie));
-            bool exist = categorie.Credentials_.Exists(credential => credential.Label_.ToUpper().Equals(inputAddCredentialName.Text.ToUpper()));
+            Category categorie = Category.Categories_.Find(categorie_ => categorie_.Name_.Equals(MainForm.Instance.ActiveCategorie));
+            bool exist = categorie.Credentials.Exists(credential => credential.Label_.ToUpper().Equals(inputAddCredentialName.Text.ToUpper()));
 
             if (!exist) {
-                Builder.buildCredential(flowLayoutPanel, inputAddCredentialName.Text, inputaddCredentialLogin.Text, inputaddCredentialPassword.Text);
-                categorie.Credentials_.Add(new Credential(inputAddCredentialName.Text, inputaddCredentialLogin.Text, inputaddCredentialPassword.Text));
+                Builder.BuildCredential(flowLayoutPanel, inputAddCredentialName.Text, inputaddCredentialLogin.Text, inputaddCredentialPassword.Text);
+                categorie.Credentials.Add(new Credential(inputAddCredentialName.Text, inputaddCredentialLogin.Text, inputaddCredentialPassword.Text));
             }
             else {
                 Notification notification = new Notification(Program.Fields["error_name_already_use"]);
@@ -50,7 +55,7 @@ namespace LowaPasswd.forms {
             inputaddCredentialPassword.Clear();
         }
 
-        private bool passwordSecurityThreshold(string password) {
+        private bool PasswordSecurityThreshold(string password) {
 
             var expectedPasswordPattern = new Regex(@"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,15}$");
             var isValidPassword = expectedPasswordPattern.IsMatch(password);
