@@ -22,5 +22,10 @@ namespace LowaPasswd.models
         public string Label_ { get => label_; set => label_ = value; }
         public string Login_ { get => login_; set => login_ = value; }
         public string Password_ { get => password_; set => password_ = value; }
+
+        public override string ToString()
+        {
+            return base.ToString();
+        }
     }
 }
