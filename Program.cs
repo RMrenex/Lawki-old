@@ -23,7 +23,7 @@ namespace LowaPasswd {
         [STAThread]
         static void Main()
         {
-            FileManager.setupApplicationFiles();
+            FileManager.SetupApplicationFiles();
 
             if (ConfigurationManager.AppSettings.Get("first").Equals("true")) {
 
@@ -31,10 +31,10 @@ namespace LowaPasswd {
                 lang = ConfigurationManager.AppSettings.Get("lang");
 
                 if (lang.Equals("fr")) {
-                    lang_file = XDocument.Load(FileManager.applicationDirectoryPath + "/lang/Fr.xml");
+                    lang_file = XDocument.Load(FileManager.ApplicationDirectoryPath + "/lang/Fr.xml");
                 }
                 else {
-                    lang_file = XDocument.Load(FileManager.applicationDirectoryPath + "/lang/En.xml");
+                    lang_file = XDocument.Load(FileManager.ApplicationDirectoryPath + "/lang/En.xml");
                 }
 
                 xmlFields = lang_file.Descendants("add").ToDictionary(key => key.Attribute("key").Value, value => value.Attribute("value").Value);

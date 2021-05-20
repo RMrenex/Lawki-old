@@ -11,15 +11,15 @@ using System.Windows.Forms;
 namespace LowaPass {
     public partial class MainForm : Form
     {
-        public static MainForm instance;
-        private InformationForm informationForm;
-        private SettingsForm settingsForm;
-        public Form currentForm = null;
-        public Panel pannelCategorieDisplayer;
-        public Panel showContent;
-        private const int WM_NCLBUTTONDOWN = 0xA1;
-        private const int HT_CAPTION = 0x2;
-        private string activeCategorie = null;
+        public static MainForm Instance;
+        private InformationForm _informationForm;
+        private SettingsForm _settingsForm;
+        public Form CurrentForm = null;
+        public Panel PannelCategorieDisplayer;
+        public Panel ShowContent;
+        private const int WmNclbuttondown = 0xA1;
+        private const int HtCaption = 0x2;
+        private string _activeCategorie = null;
 
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
@@ -40,17 +40,21 @@ namespace LowaPass {
         public MainForm()
         {
             InitializeComponent();
-            instance = this;
+            Instance = this;
             labelAddCategorie.Text = Program.Fields["mainForm_add_category"];
-            pannelCategorieDisplayer = categorieDisplayer;
-            showContent = displayContent;
+            PannelCategorieDisplayer = categorieDisplayer;
+            ShowContent = displayContent;
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 5, 5));
             metroScrollBar.Scroll += (sender, e) => { categorieDisplayer.VerticalScroll.Value = metroScrollBar.Value; };
+
+            if (Category.Categories_.Count != 0) {
+                Category.Categories_.ForEach(category => Builder.BuildCategorie(category.Name_));
+            }
         }
 
         private void close_Click(object sender, EventArgs e)
         {
-            FileManager.writeInFile();
+            FileManager.WriteInFile();
             this.Close();
         }
 
@@ -84,7 +88,7 @@ namespace LowaPass {
             if (e.Button == MouseButtons.Left)
             {
                 ReleaseCapture();
-                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+                SendMessage(Handle, WmNclbuttondown, HtCaption, 0);
             }
         }
 
@@ -111,36 +115,36 @@ namespace LowaPass {
 
         private void information_Click(object sender, EventArgs e)
         {
-            updateForm();
+            UpdateForm();
 
-            informationForm = new InformationForm();
-            informationForm.TopLevel = false;
-            informationForm.Dock = DockStyle.Fill;
-            informationForm.BackColor = displayContent.BackColor;
+            _informationForm = new InformationForm();
+            _informationForm.TopLevel = false;
+            _informationForm.Dock = DockStyle.Fill;
+            _informationForm.BackColor = displayContent.BackColor;
 
-            this.displayContent.Controls.Add(informationForm);
-            informationForm.Show();
-            currentForm = informationForm;
+            this.displayContent.Controls.Add(_informationForm);
+            _informationForm.Show();
+            CurrentForm = _informationForm;
         }
 
         private void settings_Click(object sender, EventArgs e) {
 
-            updateForm();
+            UpdateForm();
 
-            settingsForm = new SettingsForm(labelAddCategorie);
-            settingsForm.TopLevel = false;
-            settingsForm.Dock = DockStyle.Fill;
-            settingsForm.BackColor = displayContent.BackColor;
+            _settingsForm = new SettingsForm(labelAddCategorie);
+            _settingsForm.TopLevel = false;
+            _settingsForm.Dock = DockStyle.Fill;
+            _settingsForm.BackColor = displayContent.BackColor;
 
-            this.displayContent.Controls.Add(settingsForm);
-            settingsForm.Show();
-            currentForm = settingsForm;
+            this.displayContent.Controls.Add(_settingsForm);
+            _settingsForm.Show();
+            CurrentForm = _settingsForm;
         }
 
-        public void updateForm() {
+        public void UpdateForm() {
 
-            if (currentForm != null) {
-                this.displayContent.Controls.Remove(currentForm);
+            if (CurrentForm != null) {
+                this.displayContent.Controls.Remove(CurrentForm);
             }
         }
 
@@ -171,15 +175,15 @@ namespace LowaPass {
                 return;
             }
 
-            else if (Categorie.Categories_.Find(categorie => categorie.Name_.ToUpper().Equals(inputAddCategorieButton.Text.ToUpper())) != null){
+            else if (Category.Categories_.Find(categorie => categorie.Name_.ToUpper().Equals(inputAddCategorieButton.Text.ToUpper())) != null){
                 Notification notification = new Notification("Erreur : Ce nom de catégorie est déjà utilisé");
                 notification.Show();
                 System.Media.SystemSounds.Exclamation.Play();
                 return;
             }
 
-            Categorie.Categories_.Add(new Categorie(inputAddCategorieButton.Text, new List<Credential>()));
-            Builder.buildCategorie(inputAddCategorieButton.Text);
+            Category.Categories_.Add(new Category(inputAddCategorieButton.Text, new List<Credential>()));
+            Builder.BuildCategorie(inputAddCategorieButton.Text);
             inputAddCategorieButton.ResetText();
 
         }
@@ -192,6 +196,6 @@ namespace LowaPass {
 
         }
 
-        public string ActiveCategorie { get => activeCategorie; set => activeCategorie = value; }
+        public string ActiveCategorie { get => _activeCategorie; set => _activeCategorie = value; }
     }
 }

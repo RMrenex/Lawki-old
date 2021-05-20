@@ -1,71 +1,66 @@
-﻿using LowaPasswd.forms;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
+using System.Runtime.CompilerServices;
 
-namespace LowaPasswd.models
-{
+namespace LowaPasswd.models {
     class FileManager
     {
-        private static string programFilePath = Environment.ExpandEnvironmentVariables("%ProgramW6432%");
-        public static string applicationDirectoryPath = programFilePath + "\\LowaPass";
-        private static string langDirectoryPath = applicationDirectoryPath + "\\lang";
-        private static string themeDirectoryPath = applicationDirectoryPath + "\\theme";
-        private static string credentialsFilePath = applicationDirectoryPath + "\\credentials.json";
-        private static string credentialsEncryptFilePath = applicationDirectoryPath + "\\credentialsAES.json";
+        private static readonly string ProgramFilePath = Environment.ExpandEnvironmentVariables("%ProgramW6432%");
+        public static string ApplicationDirectoryPath = ProgramFilePath + "\\LowaPass";
+        private static readonly string LangDirectoryPath = ApplicationDirectoryPath + "\\lang";
+        private static string themeDirectoryPath = ApplicationDirectoryPath + "\\theme";
+        private static readonly string CredentialsFilePath = ApplicationDirectoryPath + "\\credentials.json";
+        private static readonly string CredentialsEncryptFilePath = ApplicationDirectoryPath + "\\credentialsAES.json";
         //private static string langFrFilePath = langDirectoryPath + "\\Fr.xml";
         //private static string langEnFilePath = langDirectoryPath + "\\En.xml";
 
-        public static void createApplicationDirectory()
+        public static void CreateApplicationDirectory()
         {
 
             try
             {
 
-                if (Directory.Exists(applicationDirectoryPath))
+                if (Directory.Exists(ApplicationDirectoryPath))
                 {
                     System.Diagnostics.Debug.WriteLine("Already Exist");
                     return;
                 }
 
-                DirectoryInfo directoryInfo = Directory.CreateDirectory(applicationDirectoryPath);
+                DirectoryInfo directoryInfo = Directory.CreateDirectory(ApplicationDirectoryPath);
                 System.Diagnostics.Debug.WriteLine("Created");
 
             }
 
             catch (Exception e)
             {
-                Console.WriteLine("The process failed: {0}", e.ToString());
+                Console.WriteLine(@"The process failed: {0}", e.ToString());
             }
         }
 
-        public static void setupApplicationFiles()
+        public static void SetupApplicationFiles()
         {
 
             try
             {
 
-                if (Directory.Exists(langDirectoryPath)) {
+                if (Directory.Exists(LangDirectoryPath)) {
                     System.Diagnostics.Debug.WriteLine("Already Exist LANG D");
                 }
                 else {
-                    DirectoryInfo directoryInfo = Directory.CreateDirectory(langDirectoryPath);
+                    DirectoryInfo directoryInfo = Directory.CreateDirectory(LangDirectoryPath);
                 }
 
-                if (!File.Exists(credentialsFilePath) && !File.Exists(credentialsEncryptFilePath)) {
+                if (!File.Exists(CredentialsFilePath) && !File.Exists(CredentialsEncryptFilePath)) {
 
-                    using (StreamWriter sw = File.CreateText(credentialsFilePath)) {
+                    using (StreamWriter sw = File.CreateText(CredentialsFilePath)) {
                         sw.WriteLine("");
                     }
                 }
                 else {
-                    loadDatabaseFile();
+                    LoadDatabaseFile();
                 }
             }
 
@@ -75,30 +70,31 @@ namespace LowaPasswd.models
             }
         }
 
-        public static void writeInFile() {
+        public static void WriteInFile() {
 
-            using (StreamWriter file = File.CreateText(credentialsFilePath))
+            using (StreamWriter file = File.CreateText(CredentialsFilePath))
             {
                 JsonSerializer serializer = new JsonSerializer();
-                //serialize object directly into file stream
-                serializer.Serialize(file, Categorie.Categories_);
+
+                serializer.Serialize(file, Category.Categories_);
             }
 
-            Crypto.AES_Encrypt(credentialsFilePath, credentialsEncryptFilePath);
+            //Crypto.AES_Encrypt(CredentialsFilePath, CredentialsEncryptFilePath);
         }
 
-        private static List<Categorie> loadDatabaseFile() {
+        private static void LoadDatabaseFile() {
 
-            var categories = new List<Categorie>();
+            var categories = new List<Category>();
 
-            Crypto.AES_Decrypt(credentialsEncryptFilePath, credentialsFilePath);
+            //Crypto.AES_Decrypt(CredentialsEncryptFilePath, CredentialsFilePath);
 
-            //using (StreamReader reader = new StreamReader(credentialsFilePath)) {
+            using (StreamReader reader = new StreamReader(CredentialsFilePath)) {
 
-            //    string json = reader.ReadToEnd();
-            //    categories = JsonConvert.DeserializeObject<List<Categorie>>(json);
-            //}
-            return categories;
+                string json = reader.ReadToEnd();
+                categories = JsonConvert.DeserializeObject<List<Category>>(json);
+            }
+
+            Category.Categories_.AddRange(categories);
         }
 
     }

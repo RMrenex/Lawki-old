@@ -103,7 +103,7 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="models\Builder.cs" />
-    <Compile Include="models\Categorie.cs" />
+    <Compile Include="models\Category.cs" />
     <Compile Include="models\Credential.cs" />
     <Compile Include="models\Crypto.cs" />
     <Compile Include="models\FileManager.cs" />

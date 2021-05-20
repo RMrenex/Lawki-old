@@ -11,18 +11,15 @@ using System.Windows.Forms;
 namespace LowaPasswd.models {
     class Crypto {
 
-        private static byte[] salt = new byte[] { 0x49, 0x76, 0x61, 0x6e, 0x20, 0x4d, 0x65, 0x64, 0x76, 0x65, 0x64, 0x65, 0x76 };
-        private static byte[] passwordBytes = Encoding.ASCII.GetBytes("V42ho5qZIUzNHAeq8g");
+        private static readonly byte[] salt = new byte[] { 0x49, 0x76, 0x61, 0x6e, 0x20, 0x4d, 0x65, 0x64, 0x76, 0x65, 0x64, 0x65, 0x76 };
+        private static readonly byte[] passwordBytes = Encoding.ASCII.GetBytes("V42ho5qZIUzNHAeq8g");
 
         public static void AES_Encrypt(string inputFile, string outputFile) {
 
             string cryptFile = outputFile;
             FileStream fsCrypt = new FileStream(cryptFile, FileMode.Create);
 
-            RijndaelManaged AES = new RijndaelManaged();
-
-            AES.KeySize = 256;
-            AES.BlockSize = 128;
+            RijndaelManaged AES = new RijndaelManaged {KeySize = 256, BlockSize = 128};
 
             var key = new Rfc2898DeriveBytes(passwordBytes, salt, 1000);
             AES.Key = key.GetBytes(AES.KeySize / 8);
@@ -41,20 +38,17 @@ namespace LowaPasswd.models {
 
             fsIn.Close();
             cs.Close();
-            fsCrypt.Close();
+            fsCrypt.Close(); 
 
             File.Delete(inputFile);
-            Console.WriteLine("ENCRYPT");
+            Console.WriteLine(@"ENCRYPT");
         }
 
         public static void AES_Decrypt(string inputFile, string outputFile) {
 
             FileStream fsCrypt = new FileStream(inputFile, FileMode.Open);
 
-            RijndaelManaged AES = new RijndaelManaged();
-
-            AES.KeySize = 256;
-            AES.BlockSize = 128;
+            RijndaelManaged AES = new RijndaelManaged {KeySize = 256, BlockSize = 128};
 
             var key = new Rfc2898DeriveBytes(passwordBytes, salt, 1000);
             AES.Key = key.GetBytes(AES.KeySize / 8);
@@ -80,7 +74,7 @@ namespace LowaPasswd.models {
             fsCrypt.Close();
 
             File.Delete(inputFile);
-            Console.WriteLine("DECRYPT");
+            Console.WriteLine(@"DECRYPT");
         }
 
         private static byte[] GenerateRandomSalt() {
