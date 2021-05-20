@@ -14,7 +14,7 @@ namespace LowaPass.Forms {
         public SettingsForm(Label labelAddCategorie)
         {
             InitializeComponent();
-            updateUI(false);
+            UpdateUi(false);
             this.labelAddCategorie = labelAddCategorie;
 
             if (ConfigurationManager.AppSettings.Get("lang").Equals("fr")) {
@@ -51,23 +51,27 @@ namespace LowaPass.Forms {
 
                 if (comboBoxLang.Text.Equals("Francais/French")) {
                     Console.WriteLine("FR");
-                    Program.Lang_file = XDocument.Load(FileManager.applicationDirectoryPath + "/lang/Fr.xml");
+                    Program.Lang_file = XDocument.Load(FileManager.ApplicationDirectoryPath + "/lang/Fr.xml");
                     Program.Fields.Clear();
-                    Program.Fields = Program.Lang_file.Descendants("add").ToDictionary(key => key.Attribute("key").Value, value => value.Attribute("value").Value);
+                    Program.Fields = Program.Lang_file.Descendants("add").ToDictionary(key => key.Attribute("key")?.Value, value => value.Attribute("value").Value);
+
+                    //ConfigurationManager.AppSettings.Set("lang", "fr");
                 }
                 else if (comboBoxLang.Text.Equals("Anglais/English")) {
-                    Console.WriteLine("EN");
-                    Program.Lang_file = XDocument.Load(FileManager.applicationDirectoryPath + "/lang/En.xml");
+                    Console.WriteLine(@"EN");
+                    Program.Lang_file = XDocument.Load(FileManager.ApplicationDirectoryPath + "/lang/En.xml");
                     Program.Fields.Clear();
-                    Program.Fields = Program.Lang_file.Descendants("add").ToDictionary(key => key.Attribute("key").Value, value => value.Attribute("value").Value);
+                    Program.Fields = Program.Lang_file.Descendants("add").ToDictionary(key => key.Attribute("key")?.Value, value => value.Attribute("value").Value);
+
+                    //ConfigurationManager.AppSettings.Set("lang", "en");
                 }
             }
 
-            updateUI(true);
+            UpdateUi(true);
 
         }
 
-        private void updateUI(bool force) {
+        private void UpdateUi(bool force) {
 
             if (force) {
                 labelAddCategorie.Text = Program.Fields["mainForm_add_category"];

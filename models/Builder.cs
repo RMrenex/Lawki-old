@@ -6,7 +6,7 @@ using System.Windows.Forms;
 namespace LowaPasswd.models {
     class Builder {
 
-        public static void buildCategorie(string name) {
+        public static void BuildCategorie(string name) {
 
             Panel panel = new Panel() {
                 Name = "panel_" + name,
@@ -25,22 +25,22 @@ namespace LowaPasswd.models {
 
             button.Click += (sender, evt) => {
 
-                MainForm.instance.updateForm();
+                MainForm.Instance.UpdateForm();
 
                 ShowCategorieForm showCategorieForm = new ShowCategorieForm();
                 showCategorieForm.TopLevel = false;
                 showCategorieForm.Dock = DockStyle.Fill;
                 showCategorieForm.BackColor = Color.FromArgb(20, 33, 61);
 
-                MainForm.instance.showContent.Controls.Add(showCategorieForm);
+                MainForm.Instance.ShowContent.Controls.Add(showCategorieForm);
                 showCategorieForm.Show();
-                MainForm.instance.currentForm = showCategorieForm;
-                MainForm.instance.ActiveCategorie = name;
+                MainForm.Instance.CurrentForm = showCategorieForm;
+                MainForm.Instance.ActiveCategorie = name;
 
-                Categorie categorie = Categorie.Categories_.Find(categorie_ => categorie_.Name_.Equals(button.Text));
+                Category categorie = Category.Categories_.Find(categorie_ => categorie_.Name_.Equals(button.Text));
 
-                if (categorie.Credentials_.Count > 0) {
-                    categorie.Credentials_.ForEach(credential => buildCredential(showCategorieForm.flow, credential.Label_, credential.Login_, credential.Password_));
+                if (categorie.Credentials.Count > 0) {
+                    categorie.Credentials.ForEach(credential => BuildCredential(showCategorieForm.flow, credential.Label_, credential.Login_, credential.Password_));
                 }
 
             };
@@ -53,33 +53,33 @@ namespace LowaPasswd.models {
             pictureBox.SizeMode = PictureBoxSizeMode.CenterImage;
             pictureBox.BackColor = Color.FromArgb(11, 19, 43);
 
-            pictureBox.Click += (sender, evt) => { deleteCategorie(name); };
+            pictureBox.Click += (sender, evt) => { DeleteCategorie(name); };
 
-            MainForm.instance.pannelCategorieDisplayer.Controls.Add(panel);
+            MainForm.Instance.PannelCategorieDisplayer.Controls.Add(panel);
             panel.Controls.Add(pictureBox);
             panel.Controls.Add(button);
         }
 
 
-        private static void deleteCategorie(string name) {
+        private static void DeleteCategorie(string name) {
 
-            foreach (Control control in MainForm.instance.pannelCategorieDisplayer.Controls) {
+            foreach (Control control in MainForm.Instance.PannelCategorieDisplayer.Controls) {
 
                 if (control is Panel) {
 
                     if (control.Name.Equals("panel_" + name)) {
 
                         Panel panelToBeDelete = (Panel)control;
-                        MainForm.instance.pannelCategorieDisplayer.Controls.Remove(control);
-                        Categorie categorieToDelete = Categorie.Categories_.Find(Categorie => Categorie.Name_.Equals(name));
-                        Categorie.Categories_.Remove(categorieToDelete);
+                        MainForm.Instance.PannelCategorieDisplayer.Controls.Remove(control);
+                        Category categorieToDelete = Category.Categories_.Find(Categorie => Categorie.Name_.Equals(name));
+                        Category.Categories_.Remove(categorieToDelete);
 
                     }
                 }
             }
         }
 
-        public static void buildCredential(Panel panel, string label, string login, string password) {
+        public static void BuildCredential(Panel panel, string label, string login, string password) {
 
             //Card-panel
             Panel cardPanel = new Panel() {
@@ -140,7 +140,7 @@ namespace LowaPasswd.models {
 
             pictureBox.MouseEnter += (s, evt) => { pictureBox.Image = new Bitmap(LowaPasswd.Properties.Resources.delete_hover); };
             pictureBox.MouseLeave += (s, evt) => { pictureBox.Image = new Bitmap(LowaPasswd.Properties.Resources.delete); };
-            pictureBox.Click += (s, evt) => { deleteCredential(label, panel, cardPanel); };
+            pictureBox.Click += (s, evt) => { DeleteCredential(label, panel, cardPanel); };
 
             //Add first sub line 
             cardTitlePanel.Controls.Add(pictureBox);
@@ -162,8 +162,8 @@ namespace LowaPasswd.models {
                 BorderStyle = BorderStyle.None
             };
 
-            textBoxLogin.DoubleClick += (s, evt) => { updateLogin(label, textBoxLogin); };
-            showTooltip(textBoxLogin);
+            textBoxLogin.DoubleClick += (s, evt) => { UpdateLogin(label, textBoxLogin); };
+            ShowTooltip(textBoxLogin);
 
             //Card modify login icon
             PictureBox pictureBoxLogin = new PictureBox() {
@@ -199,8 +199,8 @@ namespace LowaPasswd.models {
                 PasswordChar = '*'
             };
 
-            textBoxPassword.DoubleClick += (s, evt) => { updatePassword(label, textBoxPassword); };
-            showTooltip(textBoxPassword);
+            textBoxPassword.DoubleClick += (s, evt) => { UpdatePassword(label, textBoxPassword); };
+            ShowTooltip(textBoxPassword);
 
             //Card modify password icon
             PictureBox pictureBoxPassword = new PictureBox() {
@@ -222,14 +222,14 @@ namespace LowaPasswd.models {
 
         }
 
-        private static void deleteCredential(string name, Panel mainPanel, Panel deletedPanel) {
+        private static void DeleteCredential(string name, Panel mainPanel, Panel deletedPanel) {
 
-            Categorie categorie = Categorie.Categories_.Find(categorie_ => categorie_.Name_.Equals(MainForm.instance.ActiveCategorie));
-            categorie.Credentials_.RemoveAll(credential_ => credential_.Label_.Equals(name));
+            Category categorie = Category.Categories_.Find(categorie_ => categorie_.Name_.Equals(MainForm.Instance.ActiveCategorie));
+            categorie.Credentials.RemoveAll(credential_ => credential_.Label_.Equals(name));
             mainPanel.Controls.Remove(deletedPanel);
         }
 
-        private static void updateLogin(string name, TextBox textBox) {
+        private static void UpdateLogin(string name, TextBox textBox) {
 
             if (textBox.ReadOnly == true) {
                 return;
@@ -239,15 +239,15 @@ namespace LowaPasswd.models {
                 return;
             }
 
-            Categorie categorie = Categorie.Categories_.Find(categorie_ => categorie_.Name_.Equals(MainForm.instance.ActiveCategorie));
-            Credential credential = categorie.Credentials_.Find(credential_ => credential_.Label_.Equals(name));
+            Category categorie = Category.Categories_.Find(categorie_ => categorie_.Name_.Equals(MainForm.Instance.ActiveCategorie));
+            Credential credential = categorie.Credentials.Find(credential_ => credential_.Label_.Equals(name));
             credential.Login_ = textBox.Text;
 
             textBox.Name = "textBoxLogin" + textBox.Name;
             textBox.ReadOnly = true;     
         }
 
-        private static void updatePassword(string name, TextBox textBox) {
+        private static void UpdatePassword(string name, TextBox textBox) {
 
             if (textBox.ReadOnly == true) {
                 return;
@@ -257,15 +257,15 @@ namespace LowaPasswd.models {
                 return;
             }
 
-            Categorie categorie = Categorie.Categories_.Find(categorie_ => categorie_.Name_.Equals(MainForm.instance.ActiveCategorie));
-            Credential credential = categorie.Credentials_.Find(credential_ => credential_.Label_.Equals(name));
+            Category categorie = Category.Categories_.Find(categorie_ => categorie_.Name_.Equals(MainForm.Instance.ActiveCategorie));
+            Credential credential = categorie.Credentials.Find(credential_ => credential_.Label_.Equals(name));
             credential.Password_ = textBox.Text;
 
             textBox.Name = "textBoxPassword" + textBox.Name;
             textBox.ReadOnly = true;
         }
 
-        private static void showTooltip(TextBox textBox) {
+        private static void ShowTooltip(TextBox textBox) {
 
             MetroFramework.Components.MetroToolTip toolTip = new MetroFramework.Components.MetroToolTip() {
                 AutoPopDelay = 5000,
