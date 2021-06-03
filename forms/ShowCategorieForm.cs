@@ -20,7 +20,20 @@ namespace LowaPasswd.forms {
 
             if (Category.Categories_.Count != 0)
             {
-                //Category.Categories_.ForEach(category => category.Credentials.ForEach(credential => Builder.BuildCredential(flow, credential.Label_, credential.Login_, credential.Password_)));
+                {
+                    Category.Categories_.ForEach(category => category.Credentials.ForEach(credential => {
+
+                        foreach (Control control in flowLayoutPanel.Controls)
+                        {
+
+                            if (!control.Name.Equals(@"panel" + credential.Label_))
+                            {
+                                Builder.BuildCredential(flow, credential.Label_, credential.Login_, credential.Password_);
+                            }
+                        }
+
+                    }));
+                }
             }
         }
 
