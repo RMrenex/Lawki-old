@@ -1,14 +1,12 @@
-﻿using LowaPass.Forms;
-using LowaPasswd;
-using LowaPasswd.forms;
-using LowaPasswd.models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using Lawki.forms;
+using Lawki.models;
 
-namespace LowaPass {
+namespace Lawki {
     public partial class MainForm : Form
     {
         public static MainForm Instance;
@@ -95,22 +93,22 @@ namespace LowaPass {
 
         private void information_MouseEnter(object sender, EventArgs e)
         {
-            information.Image = new Bitmap(LowaPasswd.Properties.Resources.information);
+            information.Image = new Bitmap(Lawki.Properties.Resources.information);
         }
 
         private void information_MouseLeave(object sender, EventArgs e)
         {
-            information.Image = new Bitmap(LowaPasswd.Properties.Resources.information_hover);
+            information.Image = new Bitmap(Lawki.Properties.Resources.information_hover);
         }
 
         private void settings_MouseEnter(object sender, EventArgs e)
         {
-            settings.Image = new Bitmap(LowaPasswd.Properties.Resources.settings);
+            settings.Image = new Bitmap(Lawki.Properties.Resources.settings);
         }
 
         private void settings_MouseLeave(object sender, EventArgs e)
         {
-            settings.Image = new Bitmap(LowaPasswd.Properties.Resources.settings_hover);
+            settings.Image = new Bitmap(Lawki.Properties.Resources.settings_hover);
         }
 
         private void information_Click(object sender, EventArgs e)
@@ -150,12 +148,12 @@ namespace LowaPass {
 
         private void addCategorieButton_MouseEnter(object sender, EventArgs e)
         {
-            addCategorieButton.Image = new Bitmap(LowaPasswd.Properties.Resources.add_categorie);
+            addCategorieButton.Image = new Bitmap(Lawki.Properties.Resources.add_categorie);
         }
 
         private void addCategorieButton_MouseLeave(object sender, EventArgs e)
         {
-            addCategorieButton.Image = new Bitmap(LowaPasswd.Properties.Resources.add_categorie_hover);
+            addCategorieButton.Image = new Bitmap(Lawki.Properties.Resources.add_categorie_hover);
         }
 
         private void addCategorieButton_Click(object sender, EventArgs e)

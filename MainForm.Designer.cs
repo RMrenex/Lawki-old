@@ -1,5 +1,5 @@
 ﻿
-namespace LowaPass
+namespace Lawki
 {
     partial class MainForm
     {
@@ -113,7 +113,7 @@ namespace LowaPass
             // information
             // 
             this.information.Dock = System.Windows.Forms.DockStyle.Right;
-            this.information.Image = global::LowaPasswd.Properties.Resources.information_hover;
+            this.information.Image = global::Lawki.Properties.Resources.information_hover;
             this.information.Location = new System.Drawing.Point(171, 0);
             this.information.Name = "information";
             this.information.Size = new System.Drawing.Size(59, 50);
@@ -127,7 +127,7 @@ namespace LowaPass
             // settings
             // 
             this.settings.Dock = System.Windows.Forms.DockStyle.Left;
-            this.settings.Image = global::LowaPasswd.Properties.Resources.settings_hover;
+            this.settings.Image = global::Lawki.Properties.Resources.settings_hover;
             this.settings.Location = new System.Drawing.Point(0, 0);
             this.settings.Name = "settings";
             this.settings.Size = new System.Drawing.Size(59, 50);
@@ -182,8 +182,8 @@ namespace LowaPass
             // 
             this.minimize.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(33)))), ((int)(((byte)(61)))));
             this.minimize.Dock = System.Windows.Forms.DockStyle.Right;
-            this.minimize.ErrorImage = global::LowaPasswd.Properties.Resources.line;
-            this.minimize.Image = global::LowaPasswd.Properties.Resources.line;
+            this.minimize.ErrorImage = global::Lawki.Properties.Resources.line;
+            this.minimize.Image = global::Lawki.Properties.Resources.line;
             this.minimize.InitialImage = null;
             this.minimize.Location = new System.Drawing.Point(0, 0);
             this.minimize.Name = "minimize";
@@ -199,8 +199,8 @@ namespace LowaPass
             // 
             this.close.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(33)))), ((int)(((byte)(61)))));
             this.close.Dock = System.Windows.Forms.DockStyle.Right;
-            this.close.ErrorImage = global::LowaPasswd.Properties.Resources.close;
-            this.close.Image = global::LowaPasswd.Properties.Resources.close;
+            this.close.ErrorImage = global::Lawki.Properties.Resources.close;
+            this.close.Image = global::Lawki.Properties.Resources.close;
             this.close.ImageLocation = " ";
             this.close.InitialImage = null;
             this.close.Location = new System.Drawing.Point(60, 0);
@@ -253,7 +253,7 @@ namespace LowaPass
             // 
             // addCategorieButton
             // 
-            this.addCategorieButton.Image = global::LowaPasswd.Properties.Resources.add_categorie_hover;
+            this.addCategorieButton.Image = global::Lawki.Properties.Resources.add_categorie_hover;
             this.addCategorieButton.Location = new System.Drawing.Point(642, 3);
             this.addCategorieButton.Name = "addCategorieButton";
             this.addCategorieButton.Size = new System.Drawing.Size(44, 44);

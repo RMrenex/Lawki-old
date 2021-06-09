@@ -1,9 +1,8 @@
-﻿using LowaPass;
-using LowaPasswd.forms;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Windows.Forms;
+using Lawki.forms;
 
-namespace LowaPasswd.models {
+namespace Lawki.models {
     class Builder {
 
         public static void BuildCategorie(string name) {
@@ -49,7 +48,7 @@ namespace LowaPasswd.models {
             PictureBox pictureBox = new PictureBox();
             pictureBox.Name = "picture_" + name;
             pictureBox.Dock = DockStyle.Fill;
-            pictureBox.Image = new Bitmap(LowaPasswd.Properties.Resources.delete);
+            pictureBox.Image = new Bitmap(Lawki.Properties.Resources.delete);
             pictureBox.SizeMode = PictureBoxSizeMode.CenterImage;
             pictureBox.BackColor = Color.FromArgb(11, 19, 43);
 
@@ -133,13 +132,13 @@ namespace LowaPasswd.models {
             PictureBox pictureBox = new PictureBox() {
                 Name = "pictureBoxDelete" + label,
                 Dock = DockStyle.Fill,
-                Image = new Bitmap(LowaPasswd.Properties.Resources.delete),
+                Image = new Bitmap(Lawki.Properties.Resources.delete),
                 SizeMode = PictureBoxSizeMode.CenterImage,
                 BackColor = Color.FromArgb(11, 19, 43)
             };
 
-            pictureBox.MouseEnter += (s, evt) => { pictureBox.Image = new Bitmap(LowaPasswd.Properties.Resources.delete_hover); };
-            pictureBox.MouseLeave += (s, evt) => { pictureBox.Image = new Bitmap(LowaPasswd.Properties.Resources.delete); };
+            pictureBox.MouseEnter += (s, evt) => { pictureBox.Image = new Bitmap(Lawki.Properties.Resources.delete_hover); };
+            pictureBox.MouseLeave += (s, evt) => { pictureBox.Image = new Bitmap(Lawki.Properties.Resources.delete); };
             pictureBox.Click += (s, evt) => { DeleteCredential(label, panel, cardPanel); };
 
             //Add first sub line 
@@ -169,13 +168,13 @@ namespace LowaPasswd.models {
             PictureBox pictureBoxLogin = new PictureBox() {
                 Name = "pictureBoxModifyLogin" + label,
                 Dock = DockStyle.Fill,
-                Image = new Bitmap(LowaPasswd.Properties.Resources.card_modify),
+                Image = new Bitmap(Lawki.Properties.Resources.card_modify),
                 SizeMode = PictureBoxSizeMode.CenterImage,
                 BackColor = Color.FromArgb(11, 19, 43)
             };
 
-            pictureBoxLogin.MouseEnter += (s, evt) => { pictureBoxLogin.Image = new Bitmap(LowaPasswd.Properties.Resources.card_modify_hover); };
-            pictureBoxLogin.MouseLeave += (s, evt) => { pictureBoxLogin.Image = new Bitmap(LowaPasswd.Properties.Resources.card_modify); };
+            pictureBoxLogin.MouseEnter += (s, evt) => { pictureBoxLogin.Image = new Bitmap(Lawki.Properties.Resources.card_modify_hover); };
+            pictureBoxLogin.MouseLeave += (s, evt) => { pictureBoxLogin.Image = new Bitmap(Lawki.Properties.Resources.card_modify); };
             pictureBoxLogin.Click += (s, evt) => { textBoxLogin.ReadOnly = false; };
 
             //Add second sub line
@@ -206,13 +205,13 @@ namespace LowaPasswd.models {
             PictureBox pictureBoxPassword = new PictureBox() {
                 Name = "pictureBoxModifyPassword" + label,
                 Dock = DockStyle.Fill,
-                Image = new Bitmap(LowaPasswd.Properties.Resources.card_modify),
+                Image = new Bitmap(Lawki.Properties.Resources.card_modify),
                 SizeMode = PictureBoxSizeMode.CenterImage,
                 BackColor = Color.FromArgb(11, 19, 43)
             };
 
-            pictureBoxPassword.MouseEnter += (s, evt) => { pictureBoxPassword.Image = new Bitmap(LowaPasswd.Properties.Resources.card_modify_hover); };
-            pictureBoxPassword.MouseLeave += (s, evt) => { pictureBoxPassword.Image = new Bitmap(LowaPasswd.Properties.Resources.card_modify); };
+            pictureBoxPassword.MouseEnter += (s, evt) => { pictureBoxPassword.Image = new Bitmap(Lawki.Properties.Resources.card_modify_hover); };
+            pictureBoxPassword.MouseLeave += (s, evt) => { pictureBoxPassword.Image = new Bitmap(Lawki.Properties.Resources.card_modify); };
             pictureBoxPassword.Click += (s, evt) => { textBoxPassword.ReadOnly = false; };
 
             cardPasswordPanel.Controls.Add(pictureBoxPassword);

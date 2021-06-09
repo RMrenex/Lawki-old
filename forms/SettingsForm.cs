@@ -1,12 +1,11 @@
-﻿using LowaPasswd;
-using LowaPasswd.models;
-using System;
+﻿using System;
 using System.Configuration;
 using System.Linq;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using Lawki.models;
 
-namespace LowaPass.Forms {
+namespace Lawki.forms {
     public partial class SettingsForm : Form
     {
 

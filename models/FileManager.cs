@@ -1,11 +1,9 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Runtime.CompilerServices;
+using Newtonsoft.Json;
 
-namespace LowaPasswd.models {
+namespace Lawki.models {
     class FileManager
     {
         private static readonly string ProgramFilePath = Environment.ExpandEnvironmentVariables("%ProgramW6432%");

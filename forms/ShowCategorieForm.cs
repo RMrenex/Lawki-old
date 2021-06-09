@@ -1,11 +1,10 @@
-﻿using LowaPass;
-using LowaPasswd.models;
-using System;
+﻿using System;
 using System.Drawing;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using Lawki.models;
 
-namespace LowaPasswd.forms {
+namespace Lawki.forms {
     public partial class ShowCategorieForm : Form
 
     {
@@ -82,12 +81,12 @@ namespace LowaPasswd.forms {
 
         private void pictureBoxAddCredential_MouseEnter(object sender, EventArgs e) {
 
-            pictureBoxAddCredential.Image = new Bitmap(LowaPasswd.Properties.Resources.add_credential_hover);
+            pictureBoxAddCredential.Image = new Bitmap(Lawki.Properties.Resources.add_credential_hover);
 
         }
 
         private void pictureBoxAddCredential_MouseLeave(object sender, EventArgs e) {
-            pictureBoxAddCredential.Image = new Bitmap(LowaPasswd.Properties.Resources.add_credential);
+            pictureBoxAddCredential.Image = new Bitmap(Lawki.Properties.Resources.add_credential);
 
         }
     }

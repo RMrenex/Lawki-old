@@ -1,5 +1,5 @@
 ﻿
-namespace LowaPass.Forms
+namespace Lawki.forms
 {
     partial class SettingsForm
     {

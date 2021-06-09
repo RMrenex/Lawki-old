@@ -1,5 +1,5 @@
 ﻿
-namespace LowaPasswd.forms {
+namespace Lawki.forms {
     partial class Notification {
         /// <summary>
         /// Required designer variable.

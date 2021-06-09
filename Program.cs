@@ -1,13 +1,12 @@
-﻿using LowaPass;
-using LowaPasswd.models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using Lawki.models;
 
-namespace LowaPasswd {
+namespace Lawki {
     static class Program
     {
         /// <summary>

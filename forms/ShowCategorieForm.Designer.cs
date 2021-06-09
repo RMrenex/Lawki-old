@@ -1,5 +1,5 @@
 ﻿
-namespace LowaPasswd.forms
+namespace Lawki.forms
 {
     partial class ShowCategorieForm
     {
@@ -108,7 +108,7 @@ namespace LowaPasswd.forms
             // pictureBoxAddCredential
             // 
             this.pictureBoxAddCredential.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxAddCredential.Image = global::LowaPasswd.Properties.Resources.add_credential;
+            this.pictureBoxAddCredential.Image = global::Lawki.Properties.Resources.add_credential;
             this.pictureBoxAddCredential.Location = new System.Drawing.Point(833, 37);
             this.pictureBoxAddCredential.Name = "pictureBoxAddCredential";
             this.pictureBoxAddCredential.Size = new System.Drawing.Size(50, 50);
